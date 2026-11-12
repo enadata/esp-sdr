@@ -1,0 +1,3711 @@
+{
+  "version": "1.0",
+  "generated_at": "2026-11-11T08:56:12.545Z",
+  "symbols": [
+    {
+      "file": "main/common/burst_capture.h",
+      "exports": [],
+      "functions": [
+        {
+          "name": "packed_size",
+          "signature": "static size_t packed_size(unsigned n)"
+        },
+        {
+          "name": "pack_iq",
+          "signature": "static void pack_iq(unsigned n)"
+        },
+        {
+          "name": "pack_iq8",
+          "signature": "static void pack_iq8(unsigned n)"
+        },
+        {
+          "name": "wire_size",
+          "signature": "static size_t wire_size(unsigned n, unsigned format)"
+        },
+        {
+          "name": "burst_send_capture",
+          "signature": "static bool burst_send_capture(unsigned n, unsigned format, uint32_t elapsed_us)"
+        }
+      ],
+      "imports": [
+        "#include <inttypes.h>\n",
+        "#include <stdio.h>\n",
+        "#include <string.h>\n",
+        "#include \"esp_rom_crc.h\"\n"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "main/common/burst_commands.h",
+      "exports": [],
+      "functions": [
+        {
+          "name": "burst_common_command",
+          "signature": "static bool burst_common_command(char *line)"
+        }
+      ],
+      "imports": [
+        "#include <inttypes.h>\n",
+        "#include <stdbool.h>\n",
+        "#include <stdint.h>\n",
+        "#include <stdio.h>\n",
+        "#include <string.h>\n",
+        "#include \"rx_tuning.h\"\n"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "main/common/burst_gain.h",
+      "exports": [],
+      "functions": [
+        {
+          "name": "gain_max",
+          "signature": "static unsigned gain_max(void)"
+        },
+        {
+          "name": "gain_write",
+          "signature": "static void gain_write(unsigned manual, unsigned index)"
+        },
+        {
+          "name": "gain_apply",
+          "signature": "static void gain_apply(void)"
+        },
+        {
+          "name": "gain_command",
+          "signature": "static bool gain_command(const char *line)"
+        }
+      ],
+      "imports": [
+        "#include \"burst_gain_min.h\"\n",
+        "#include \"rx_gain_force.h\"\n"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "main/common/burst_gain_min.h",
+      "exports": [],
+      "functions": [],
+      "imports": [],
+      "docstrings": []
+    },
+    {
+      "file": "main/common/burst_gain_table.c",
+      "exports": [],
+      "functions": [
+        {
+          "name": "__wrap_phy_write_gain_mem",
+          "signature": "void __wrap_phy_write_gain_mem(uint32_t a, uint32_t b, uint32_t c, uint32_t index)"
+        },
+        {
+          "name": "burst_gain_mirror",
+          "signature": "void burst_gain_mirror(int index)"
+        },
+        {
+          "name": "burst_gain_dc_codes",
+          "signature": "bool burst_gain_dc_codes(unsigned index, unsigned codes[2])"
+        },
+        {
+          "name": "burst_gain_dc_set",
+          "signature": "bool burst_gain_dc_set(unsigned index, unsigned i, unsigned q)"
+        }
+      ],
+      "imports": [
+        "#include <stdint.h>\n",
+        "#include <stdbool.h>\n",
+        "#include \"burst_gain_table.h\"\n"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "main/common/burst_gain_table.h",
+      "exports": [],
+      "functions": [],
+      "imports": [
+        "#include <stdbool.h>\n"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "main/common/burst_gpio.c",
+      "exports": [],
+      "functions": [
+        {
+          "name": "excluded_pins",
+          "signature": "static uint64_t excluded_pins(void)"
+        },
+        {
+          "name": "burst_gpio_init",
+          "signature": "void burst_gpio_init(void)"
+        },
+        {
+          "name": "reply",
+          "signature": "static void reply(const char *s)"
+        },
+        {
+          "name": "burst_gpio_command",
+          "signature": "bool burst_gpio_command(const char *line)"
+        }
+      ],
+      "imports": [
+        "#include \"burst_gpio.h\"\n",
+        "#include \"burst_serial.h\"\n",
+        "#include <stdint.h>\n",
+        "#include <stdio.h>\n",
+        "#include <string.h>\n",
+        "#include \"driver/gpio.h\"\n",
+        "#include \"esp_check.h\"\n",
+        "#include \"esp_private/esp_gpio_reserve.h\"\n",
+        "#include \"soc/soc_caps.h\"\n",
+        "#include \"soc/io_mux_reg.h\"\n",
+        "#include \"soc/usb_pins.h\"\n"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "main/common/burst_gpio.h",
+      "exports": [],
+      "functions": [],
+      "imports": [
+        "#include <stdbool.h>\n"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "main/common/burst_limits.h",
+      "exports": [],
+      "functions": [
+        {
+          "name": "limits_command",
+          "signature": "static bool limits_command(const char *line)"
+        }
+      ],
+      "imports": [
+        "#include \"rx_bandwidth.h\"\n",
+        "#include \"burst_gain_min.h\"\n"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "main/common/burst_parse.h",
+      "exports": [],
+      "functions": [
+        {
+          "name": "burst_parse_uints",
+          "signature": "static inline int burst_parse_uints(const char *s, unsigned *v, int max)"
+        },
+        {
+          "name": "burst_parse_int",
+          "signature": "static inline bool burst_parse_int(const char *s, int low, int high, int *out)"
+        }
+      ],
+      "imports": [
+        "#include <stdbool.h>\n"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "main/common/burst_serial.c",
+      "exports": [],
+      "functions": [
+        {
+          "name": "baud_command",
+          "signature": "static bool baud_command(const char *line)"
+        },
+        {
+          "name": "usb_ready",
+          "signature": "static void usb_ready(void *arg)"
+        },
+        {
+          "name": "burst_serial_init",
+          "signature": "void burst_serial_init(void)"
+        },
+        {
+          "name": "burst_serial_port",
+          "signature": "burst_serial_port_t burst_serial_port(void)"
+        },
+        {
+          "name": "burst_serial_baud",
+          "signature": "unsigned burst_serial_baud(void)"
+        },
+        {
+          "name": "read_port",
+          "signature": "static int read_port(burst_serial_port_t port, void *buffer, size_t size)"
+        },
+        {
+          "name": "burst_serial_stop_requested",
+          "signature": "bool burst_serial_stop_requested(void)"
+        },
+        {
+          "name": "burst_serial_poll_line",
+          "signature": "int burst_serial_poll_line(char *line, size_t capacity)"
+        },
+        {
+          "name": "transfer_deadline",
+          "signature": "static int64_t transfer_deadline(size_t size)"
+        },
+        {
+          "name": "burst_serial_try_send",
+          "signature": "size_t burst_serial_try_send(const void *data, size_t size)"
+        },
+        {
+          "name": "burst_serial_send",
+          "signature": "bool IRAM_ATTR burst_serial_send(const void *data, size_t size)"
+        },
+        {
+          "name": "serve_reply",
+          "signature": "static void serve_reply(const char *text)"
+        },
+        {
+          "name": "burst_serial_serve",
+          "signature": "void burst_serial_serve(void (*handle)(char *line))"
+        }
+      ],
+      "imports": [
+        "#include \"burst_serial.h\"\n",
+        "#include \"burst_gpio.h\"\n",
+        "#include <stdint.h>\n",
+        "#include <string.h>\n",
+        "#include <stdio.h>\n",
+        "#include \"driver/uart.h\"\n",
+        "#include \"esp_attr.h\"\n",
+        "#include \"esp_check.h\"\n",
+        "#include \"esp_timer.h\"\n",
+        "#include \"freertos/FreeRTOS.h\"\n",
+        "#include \"freertos/task.h\"\n",
+        "#include \"soc/soc_caps.h\"\n",
+        "#include \"hal/usb_serial_jtag_ll.h\"\n",
+        "#include \"sdkconfig.h\"\n",
+        "#include \"esp_private/usb_console.h\"\n"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "main/common/burst_serial.h",
+      "exports": [],
+      "functions": [],
+      "imports": [
+        "#include <stdbool.h>\n",
+        "#include <stddef.h>\n"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "main/common/burst_version.c",
+      "exports": [],
+      "functions": [
+        {
+          "name": "burst_version_command",
+          "signature": "bool burst_version_command(const char *line)"
+        }
+      ],
+      "imports": [
+        "#include \"burst_version.h\"\n",
+        "#include \"burst_serial.h\"\n",
+        "#include \"build_version.h\"\n",
+        "#include <string.h>\n"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "main/common/burst_version.h",
+      "exports": [],
+      "functions": [],
+      "imports": [
+        "#include <stdbool.h>\n"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "main/common/ring_capture.c",
+      "exports": [],
+      "functions": [
+        {
+          "name": "select_banks",
+          "signature": "static inline void select_banks(uint32_t saved, unsigned mask)"
+        },
+        {
+          "name": "bank_ptr(unsigned b)",
+          "signature": "static inline uint32_t *bank_ptr(unsigned b)"
+        },
+        {
+          "name": "ring_capture_bank(unsigned b)",
+          "signature": "const uint32_t *ring_capture_bank(unsigned b)"
+        },
+        {
+          "name": "ring_capture_rate_hz",
+          "signature": "unsigned ring_capture_rate_hz(unsigned rate)"
+        },
+        {
+          "name": "rate_bits",
+          "signature": "static uint32_t rate_bits(unsigned rate)"
+        },
+        {
+          "name": "cycles_per_pair",
+          "signature": "static unsigned cycles_per_pair(unsigned rate)"
+        },
+        {
+          "name": "fill_sentinels",
+          "signature": "RING_SWITCH static void fill_sentinels(unsigned b, unsigned at, unsigned count)"
+        },
+        {
+          "name": "find_first",
+          "signature": "RING_SWITCH static uint32_t find_first(unsigned b, unsigned origin, unsigned guard)"
+        },
+        {
+          "name": "find_end",
+          "signature": "RING_SWITCH static uint32_t find_end(unsigned b, unsigned origin, unsigned write_index, unsigned guard)"
+        },
+        {
+          "name": "txq_push",
+          "signature": "RING_HOT static bool txq_push(const void *data, size_t n)"
+        },
+        {
+          "name": "txq_pump",
+          "signature": "RING_HOT static void txq_pump(void)"
+        },
+        {
+          "name": "host_input",
+          "signature": "RING_HOT static bool host_input(void)"
+        },
+        {
+          "name": "ring_capture_init",
+          "signature": "void ring_capture_init(void)"
+        },
+        {
+          "name": "ring_capture_valid_nfft",
+          "signature": "bool ring_capture_valid_nfft(unsigned n)"
+        },
+        {
+          "name": "spec_setup",
+          "signature": "static void spec_setup(unsigned n)"
+        },
+        {
+          "name": "log_tables_init",
+          "signature": "static void log_tables_init(void)"
+        },
+        {
+          "name": "spec_unpack",
+          "signature": "IRAM_ATTR static void spec_unpack(const uint32_t *p, unsigned at, unsigned from, unsigned to)"
+        },
+        {
+          "name": "dc_track",
+          "signature": "IRAM_ATTR static void dc_track(int16_t *x)"
+        },
+        {
+          "name": "spec_remove_dc",
+          "signature": "IRAM_ATTR static void spec_remove_dc(void)"
+        },
+        {
+          "name": "spec_accumulate",
+          "signature": "IRAM_ATTR static void spec_accumulate(bool max_hold, unsigned from, unsigned to)"
+        },
+        {
+          "name": "stats_maybe",
+          "signature": "IRAM_ATTR static void stats_maybe(bool core1_side)"
+        },
+        {
+          "name": "scalar_telemetry",
+          "signature": "static void scalar_telemetry(unsigned cycles, bool complete)"
+        },
+        {
+          "name": "frame_close",
+          "signature": "RING_HOT static void frame_close(void)"
+        },
+        {
+          "name": "emit_chunk",
+          "signature": "RING_HOT static void emit_chunk(void)"
+        },
+        {
+          "name": "unit_done",
+          "signature": "RING_HOT static void unit_done(void)"
+        },
+        {
+          "name": "fir_i0",
+          "signature": "static float fir_i0(float x)"
+        },
+        {
+          "name": "fir_tap",
+          "signature": "static float fir_tap(uint32_t i, uint32_t L, float fc)"
+        },
+        {
+          "name": "fir_alloc(size_t n)",
+          "signature": "static void *fir_alloc(size_t n)"
+        },
+        {
+          "name": "fstage_init",
+          "signature": "static bool fstage_init(fstage_t *s, uint32_t D, uint32_t L, uint32_t shift, uint32_t in_max)"
+        },
+        {
+          "name": "fstage_free",
+          "signature": "static void fstage_free(fstage_t *s)"
+        },
+        {
+          "name": "fstage_reset",
+          "signature": "static void fstage_reset(fstage_t *s, uint64_t start)"
+        },
+        {
+          "name": "fstage_run",
+          "signature": "IRAM_ATTR static uint32_t fstage_run(fstage_t *s, int16_t *oi, int16_t *oq)"
+        },
+        {
+          "name": "fir_c1",
+          "signature": "static inline void fir_c1(const uint32_t *p, uint32_t a, fstage_t *s)"
+        },
+        {
+          "name": "fir_feed",
+          "signature": "IRAM_ATTR static void fir_feed(const uint32_t *p, uint32_t a, uint32_t m)"
+        },
+        {
+          "name": "fir_reset",
+          "signature": "static void fir_reset(uint64_t index)"
+        },
+        {
+          "name": "fir_free",
+          "signature": "static void fir_free(void)"
+        },
+        {
+          "name": "fir_setup",
+          "signature": "static bool fir_setup(uint32_t D)"
+        },
+        {
+          "name": "iqs_flush",
+          "signature": "IRAM_ATTR static void iqs_flush(void)"
+        },
+        {
+          "name": "iqs_put",
+          "signature": "IRAM_ATTR static inline void iqs_put(int32_t i, int32_t q)"
+        },
+        {
+          "name": "iqs_slice",
+          "signature": "static bool iqs_slice(uint32_t n)"
+        },
+        {
+          "name": "iqs_abandon",
+          "signature": "IRAM_ATTR static void iqs_abandon(void)"
+        },
+        {
+          "name": "iqs_accept",
+          "signature": "static void iqs_accept(unsigned b, uint32_t first, uint32_t count, uint64_t index)"
+        },
+        {
+          "name": "release_bank",
+          "signature": "RING_HOT static void release_bank(unsigned b)"
+        },
+        {
+          "name": "work_slice",
+          "signature": "RING_HOT static bool work_slice(void)"
+        },
+        {
+          "name": "ring_capture_dual_active",
+          "signature": "bool ring_capture_dual_active(void)"
+        },
+        {
+          "name": "ring_capture_core1_alive",
+          "signature": "bool ring_capture_core1_alive(void)"
+        },
+        {
+          "name": "ring_capture_set_dual",
+          "signature": "void ring_capture_set_dual(bool on)"
+        },
+        {
+          "name": "c1_txq_push",
+          "signature": "IRAM_ATTR static bool c1_txq_push(const uint8_t *d, uint32_t n)"
+        },
+        {
+          "name": "c1_encode_step",
+          "signature": "IRAM_ATTR static void c1_encode_step(void)"
+        },
+        {
+          "name": "c1_emit_frame",
+          "signature": "IRAM_ATTR static void c1_emit_frame(void)"
+        },
+        {
+          "name": "unpack_seg",
+          "signature": "IRAM_ATTR static void unpack_seg(int16_t *dst, const uint32_t *p, unsigned at, unsigned from, unsigned to)"
+        },
+        {
+          "name": "unpack_to",
+          "signature": "IRAM_ATTR static void unpack_to(int16_t *dst, const uint32_t *p, unsigned at)"
+        },
+        {
+          "name": "accumulate_buf",
+          "signature": "IRAM_ATTR static void accumulate_buf(const int16_t *x, bool max_hold)"
+        },
+        {
+          "name": "claim_block",
+          "signature": "IRAM_ATTR static bool claim_block(uint32_t *out)"
+        },
+        {
+          "name": "c1_take_handoff",
+          "signature": "IRAM_ATTR static void c1_take_handoff(void)"
+        },
+        {
+          "name": "c1_unit",
+          "signature": "IRAM_ATTR static void c1_unit(const c1_unit_t *u)"
+        },
+        {
+          "name": "c0_assist",
+          "signature": "IRAM_ATTR static void c0_assist(void)"
+        },
+        {
+          "name": "c1_iq_unit",
+          "signature": "IRAM_ATTR static void c1_iq_unit(const c1_unit_t *u)"
+        },
+        {
+          "name": "s3_core1_main",
+          "signature": "IRAM_ATTR void s3_core1_main(void)"
+        },
+        {
+          "name": "c1_revoke",
+          "signature": "static inline void c1_revoke(unsigned b)"
+        },
+        {
+          "name": "c1_start",
+          "signature": "static void c1_start(void)"
+        },
+        {
+          "name": "fail",
+          "signature": "RING_HOT static void fail(ring_result_t *r, ring_status_t code, uint32_t detail)"
+        },
+        {
+          "name": "reclaim_bank",
+          "signature": "static inline void reclaim_bank(bool dual, unsigned b)"
+        },
+        {
+          "name": "bank_idle",
+          "signature": "static inline bool bank_idle(bool dual, unsigned b)"
+        },
+        {
+          "name": "reclaim_bank",
+          "signature": "static inline void reclaim_bank(bool dual, unsigned b)"
+        },
+        {
+          "name": "bank_idle",
+          "signature": "static inline bool bank_idle(bool dual, unsigned b)"
+        }
+      ],
+      "imports": [
+        "#include \"ring_capture.h\"\n",
+        "#include \"spectrum.h\"\n",
+        "#include \"spectrum_stats.h\"\n",
+        "#include \"sdkconfig.h\"\n",
+        "#include <math.h>\n",
+        "#include <string.h>\n",
+        "#include <stddef.h>\n",
+        "#include \"dsps_fft2r.h\"\n",
+        "#include \"esp_attr.h\"\n",
+        "#include \"esp_cpu.h\"\n",
+        "#include \"esp_rom_crc.h\"\n",
+        "#include \"esp_timer.h\"\n",
+        "#include \"freertos/FreeRTOS.h\"\n",
+        "#include \"freertos/task.h\"\n",
+        "#include \"ring_io.h\"\n",
+        "#include \"soc/soc.h\"\n",
+        "#include \"esp_heap_caps.h\"\n",
+        "#include \"hal/cpu_utility_ll.h\"\n",
+        "#include \"xt_utils.h\"\n",
+        "#include \"esp32s3/rom/ets_sys.h\"\n",
+        "#include \"ring_scalar.h\"\n"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "main/common/ring_capture.h",
+      "exports": [],
+      "functions": [],
+      "imports": [
+        "#include <stdbool.h>\n",
+        "#include <stdint.h>\n",
+        "#include \"sdkconfig.h\"\n",
+        "#include \"spectrum_dc.h\"\n"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "main/common/ring_io.h",
+      "exports": [],
+      "functions": [
+        {
+          "name": "ring_input_available",
+          "signature": "static bool ring_input_available(void)"
+        },
+        {
+          "name": "ring_read_byte",
+          "signature": "static int ring_read_byte(uint8_t *b)"
+        },
+        {
+          "name": "ring_write",
+          "signature": "static int ring_write(const uint8_t *p, unsigned n)"
+        }
+      ],
+      "imports": [
+        "#include \"burst_serial.h\"\n",
+        "#include \"driver/uart.h\"\n",
+        "#include \"hal/uart_ll.h\"\n",
+        "#include \"soc/uart_struct.h\"\n",
+        "#include \"soc/soc_caps.h\"\n",
+        "#include \"hal/usb_serial_jtag_ll.h\"\n"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "main/common/ring_scalar.h",
+      "exports": [],
+      "functions": [
+        {
+          "name": "scalar_flush",
+          "signature": "static void scalar_flush(void)"
+        },
+        {
+          "name": "scalar_accept",
+          "signature": "static void scalar_accept(unsigned bank, unsigned first, uint64_t index)"
+        },
+        {
+          "name": "scalar_work",
+          "signature": "static bool scalar_work(void)"
+        }
+      ],
+      "imports": [
+        "#include \"spectrum_math.h\"\n"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "main/common/rx_bandwidth.h",
+      "exports": [],
+      "functions": [
+        {
+          "name": "rx_bandwidth_phy_mode",
+          "signature": "static inline unsigned rx_bandwidth_phy_mode(unsigned mhz)"
+        },
+        {
+          "name": "rx_bandwidth_dcap",
+          "signature": "static inline uint8_t rx_bandwidth_dcap(unsigned mhz)"
+        }
+      ],
+      "imports": [
+        "#include <stdint.h>\n"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "main/common/rx_calibration_state.c",
+      "exports": [],
+      "functions": [
+        {
+          "name": "rx_recalibration_stale",
+          "signature": "bool rx_recalibration_stale(void)"
+        },
+        {
+          "name": "rx_recalibrate",
+          "signature": "void rx_recalibrate(unsigned mhz)"
+        },
+        {
+          "name": "__wrap_phy_set_rx_gain_cal_dc",
+          "signature": "void __wrap_phy_set_rx_gain_cal_dc(uintptr_t a, uintptr_t b, uintptr_t c, uintptr_t d)"
+        },
+        {
+          "name": "__wrap_phy_set_rx_gain_cal_dc_new",
+          "signature": "void __wrap_phy_set_rx_gain_cal_dc_new(uintptr_t a, uintptr_t b, uintptr_t c, uintptr_t d)"
+        },
+        {
+          "name": "__wrap_set_rx_gain_cal_dc_new",
+          "signature": "void __wrap_set_rx_gain_cal_dc_new(uintptr_t a, uintptr_t b, uintptr_t c, uintptr_t d, uintptr_t e)"
+        },
+        {
+          "name": "__wrap_ram_set_rx_gain_cal_dc",
+          "signature": "void __wrap_ram_set_rx_gain_cal_dc(uintptr_t a, uintptr_t b)"
+        },
+        {
+          "name": "__wrap_set_rx_gain_cal_dc",
+          "signature": "void __wrap_set_rx_gain_cal_dc(uintptr_t a)"
+        },
+        {
+          "name": "__wrap_set_rx_gain_cal_dc",
+          "signature": "void __wrap_set_rx_gain_cal_dc(uintptr_t a, uintptr_t b, uintptr_t c, uintptr_t d, uintptr_t e, uintptr_t f,\n                               uintptr_t g, uintptr_t h, uintptr_t i, uintptr_t j)"
+        }
+      ],
+      "imports": [
+        "#include \"sdkconfig.h\"\n",
+        "#include \"rx_recalibration.h\"\n",
+        "#include \"esp_private/phy.h\"\n",
+        "#include <sys/lock.h>\n",
+        "#include <stdatomic.h>\n",
+        "#include <stdint.h>\n",
+        "#include <string.h>\n"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "main/common/rx_gain_force.h",
+      "exports": [],
+      "functions": [
+        {
+          "name": "rx_gain_force",
+          "signature": "static inline void rx_gain_force(void (*set_gain)(unsigned, unsigned), bool manual, unsigned index)"
+        }
+      ],
+      "imports": [
+        "#include <stdbool.h>\n",
+        "#include <stdint.h>\n"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "main/common/rx_gain_verify.c",
+      "exports": [],
+      "functions": [
+        {
+          "name": "gain_set",
+          "signature": "static void gain_set(unsigned manual, unsigned index)"
+        },
+        {
+          "name": "capture_gain",
+          "signature": "static void IRAM_ATTR capture_gain(uint32_t low, uint32_t high, uint32_t index)"
+        },
+        {
+          "name": "__wrap_set_rx_gain_table",
+          "signature": "void __wrap_set_rx_gain_table(unsigned mhz, unsigned skip)"
+        },
+        {
+          "name": "gain_matches",
+          "signature": "static bool gain_matches(uint16_t code)"
+        },
+        {
+          "name": "rx_gain_verified_apply",
+          "signature": "bool rx_gain_verified_apply(bool manual, unsigned index)"
+        },
+        {
+          "name": "rx_gain_verified_check",
+          "signature": "bool rx_gain_verified_check(unsigned index)"
+        }
+      ],
+      "imports": [
+        "#include \"sdkconfig.h\"\n",
+        "#include <stdbool.h>\n",
+        "#include <stdint.h>\n",
+        "#include <sys/lock.h>\n",
+        "#include \"esp_attr.h\"\n",
+        "#include \"esp_private/phy.h\"\n",
+        "#include \"esp_rom_sys.h\"\n",
+        "#include \"soc/soc.h\"\n",
+        "#include \"rx_gain_force.h\"\n"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "main/common/rx_lo.h",
+      "exports": [],
+      "functions": [
+        {
+          "name": "rx_lo_plan",
+          "signature": "static inline rx_lo_plan_t rx_lo_plan(unsigned mhz)"
+        },
+        {
+          "name": "rx_lo_select",
+          "signature": "static inline bool rx_lo_select(bool alternate)"
+        }
+      ],
+      "imports": [
+        "#include <stdbool.h>\n"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "main/common/rx_pll_cal.h",
+      "exports": [],
+      "functions": [
+        {
+          "name": "rx_pll_status",
+          "signature": "static unsigned rx_pll_status(void)"
+        },
+        {
+          "name": "rx_pll_probe",
+          "signature": "static unsigned rx_pll_probe(unsigned cap, unsigned reg2)"
+        },
+        {
+          "name": "rx_pll_recover",
+          "signature": "static bool rx_pll_recover(unsigned mhz)"
+        }
+      ],
+      "imports": [
+        "#include <stdbool.h>\n"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "main/common/rx_recalibration.c",
+      "exports": [],
+      "functions": [
+        {
+          "name": "release_manual_gain",
+          "signature": "static void release_manual_gain(void)"
+        },
+        {
+          "name": "__wrap_phy_chip_set_chan_ana",
+          "signature": "void __wrap_phy_chip_set_chan_ana(unsigned mhz)"
+        },
+        {
+          "name": "rx_recalibrate_locked",
+          "signature": "void rx_recalibrate_locked(unsigned mhz)"
+        },
+        {
+          "name": "__wrap_phy_set_channel_rfpll_freq",
+          "signature": "void __wrap_phy_set_channel_rfpll_freq(unsigned mhz, unsigned crystal, unsigned mode)"
+        },
+        {
+          "name": "rx_recalibrate_locked",
+          "signature": "void rx_recalibrate_locked(unsigned mhz)"
+        },
+        {
+          "name": "__wrap_chip_v7_set_chan_ana",
+          "signature": "void __wrap_chip_v7_set_chan_ana(unsigned channel)"
+        },
+        {
+          "name": "__wrap_write_gain_mem",
+          "signature": "void __wrap_write_gain_mem(uint32_t a, uint32_t b, unsigned index)"
+        },
+        {
+          "name": "rx_h2_calibrate_iq_at_boot",
+          "signature": "void rx_h2_calibrate_iq_at_boot(void)"
+        },
+        {
+          "name": "rx_recalibrate_locked",
+          "signature": "void rx_recalibrate_locked(unsigned mhz)"
+        },
+        {
+          "name": "measurement_tune",
+          "signature": "static void measurement_tune(void)"
+        },
+        {
+          "name": "__wrap_chip_v7_set_chan_ana",
+          "signature": "void __wrap_chip_v7_set_chan_ana(unsigned channel)"
+        },
+        {
+          "name": "rx_recalibrate_locked",
+          "signature": "void rx_recalibrate_locked(unsigned mhz)"
+        }
+      ],
+      "imports": [
+        "#include \"sdkconfig.h\"\n",
+        "#include \"rx_recalibration.h\"\n",
+        "#include <stdint.h>\n",
+        "#include \"soc/soc.h\"\n",
+        "#include \"esp_rom_sys.h\"\n",
+        "#include \"rx_pll_cal.h\"\n",
+        "#include \"rx_lo.h\"\n",
+        "#include \"soc/rtc.h\"\n",
+        "#include \"esp_rom_sys.h\"\n",
+        "#include \"pll.h\"\n"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "main/common/rx_recalibration.h",
+      "exports": [],
+      "functions": [],
+      "imports": [
+        "#include <stdbool.h>\n"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "main/common/rx_tuning.h",
+      "exports": [],
+      "functions": [
+        {
+          "name": "rx_frequency_valid",
+          "signature": "static inline bool rx_frequency_valid(unsigned mhz)"
+        }
+      ],
+      "imports": [
+        "#include <stdbool.h>\n"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "main/common/spectrum.c",
+      "exports": [],
+      "functions": [
+        {
+          "name": "spectrum_workspace",
+          "signature": "spectrum_workspace_t spectrum_workspace(void)"
+        },
+        {
+          "name": "spectrum_fft_init",
+          "signature": "bool spectrum_fft_init(void)"
+        },
+        {
+          "name": "rate_hz",
+          "signature": "static unsigned rate_hz(unsigned code)"
+        },
+        {
+          "name": "send_text",
+          "signature": "static bool send_text(const char *s)"
+        },
+        {
+          "name": "put16",
+          "signature": "static void put16(unsigned at, uint16_t v)"
+        },
+        {
+          "name": "put32",
+          "signature": "static void put32(unsigned at, uint32_t v)"
+        },
+        {
+          "name": "put64",
+          "signature": "static void put64(unsigned at, uint64_t v)"
+        },
+        {
+          "name": "clamp16",
+          "signature": "static int16_t clamp16(int32_t v)"
+        },
+        {
+          "name": "capabilities",
+          "signature": "static void capabilities(void)"
+        },
+        {
+          "name": "pump_spectrum",
+          "signature": "static void pump_spectrum(void *context)"
+        },
+        {
+          "name": "pack_spectrum",
+          "signature": "static size_t pack_spectrum(unsigned n, unsigned log2n, unsigned det, unsigned merged, unsigned frames,\n                            uint64_t index, uint8_t gain)"
+        },
+        {
+          "name": "spectrum_command",
+          "signature": "bool spectrum_command(const char *line, unsigned frequency_mhz, spectrum_acquire_fn acquire)"
+        }
+      ],
+      "imports": [
+        "#include \"spectrum.h\"\n",
+        "#include \"spectrum_dc.h\"\n",
+        "#include \"spectrum_math.h\"\n",
+        "#include \"spectrum_fft.h\"\n",
+        "#include \"spectrum_stats.h\"\n",
+        "#include \"esp_cpu.h\"\n",
+        "#include \"burst_serial.h\"\n",
+        "#include \"dsps_fft2r.h\"\n",
+        "#include \"esp_rom_crc.h\"\n",
+        "#include \"esp_timer.h\"\n",
+        "#include \"freertos/FreeRTOS.h\"\n",
+        "#include \"freertos/task.h\"\n",
+        "#include <inttypes.h>\n",
+        "#include <math.h>\n",
+        "#include <stdio.h>\n",
+        "#include <string.h>\n"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "main/common/spectrum.h",
+      "exports": [],
+      "functions": [],
+      "imports": [
+        "#include <stdbool.h>\n",
+        "#include <stdint.h>\n"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "main/common/spectrum_dc.h",
+      "exports": [],
+      "functions": [
+        {
+          "name": "spectrum_sat16",
+          "signature": "static inline int16_t spectrum_sat16(int32_t v)"
+        },
+        {
+          "name": "spectrum_dc_apply",
+          "signature": "static inline __attribute__((always_inline)) void spectrum_dc_apply(spectrum_dc_t *dc, int16_t *x,\n                                                                    unsigned n)"
+        }
+      ],
+      "imports": [
+        "#include <stdbool.h>\n",
+        "#include <stdint.h>\n"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "main/common/spectrum_fft.h",
+      "exports": [],
+      "functions": [
+        {
+          "name": "spectrum_fft_poll",
+          "signature": "static inline void spectrum_fft_poll(int16_t *x, unsigned n, const int16_t *w, void (*poll)(void *),\n                                     void *context)"
+        }
+      ],
+      "imports": [
+        "#include <stdint.h>\n"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "main/common/spectrum_math.h",
+      "exports": [],
+      "functions": [
+        {
+          "name": "spectrum_complex_power",
+          "signature": "static inline uint32_t spectrum_complex_power(int16_t re, int16_t im)"
+        },
+        {
+          "name": "spectrum_log_power_code",
+          "signature": "static inline uint8_t spectrum_log_power_code(unsigned exponent, uint32_t norm)"
+        },
+        {
+          "name": "spectrum_power_code",
+          "signature": "static inline uint8_t spectrum_power_code(uint32_t power)"
+        },
+        {
+          "name": "spectrum_mean_power_code",
+          "signature": "static inline uint8_t spectrum_mean_power_code(float power)"
+        }
+      ],
+      "imports": [
+        "#include <stdint.h>\n"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "main/common/spectrum_stats.c",
+      "exports": [],
+      "functions": [
+        {
+          "name": "spectrum_stats_init",
+          "signature": "void spectrum_stats_init(spectrum_stats_t *s)"
+        },
+        {
+          "name": "spectrum_stats_emit",
+          "signature": "void spectrum_stats_emit(spectrum_stats_t *s, unsigned n, unsigned fs, uint32_t ffts, uint32_t abandoned,\n                         uint32_t drops, uint32_t late, unsigned queue, bool (*send)(const void *, size_t))"
+        }
+      ],
+      "imports": [
+        "#include \"spectrum_stats.h\"\n",
+        "#include \"spectrum_dc.h\"\n",
+        "#include \"esp_heap_caps.h\"\n",
+        "#include \"esp_private/esp_clk.h\"\n",
+        "#include \"esp_rom_crc.h\"\n",
+        "#include \"esp_timer.h\"\n",
+        "#include <string.h>\n"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "main/common/spectrum_stats.h",
+      "exports": [],
+      "functions": [],
+      "imports": [
+        "#include <stdbool.h>\n",
+        "#include <stddef.h>\n",
+        "#include <stdint.h>\n"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "main/diagnostics/dump_probe.h",
+      "exports": [],
+      "functions": [
+        {
+          "name": "dump_probe_command",
+          "signature": "static bool dump_probe_command(char *line)"
+        }
+      ],
+      "imports": [],
+      "docstrings": []
+    },
+    {
+      "file": "main/diagnostics/filter_probe.h",
+      "exports": [],
+      "functions": [
+        {
+          "name": "filter_cap_allowed",
+          "signature": "static bool filter_cap_allowed(unsigned r)"
+        },
+        {
+          "name": "filter_control_mask",
+          "signature": "static unsigned filter_control_mask(unsigned r)"
+        },
+        {
+          "name": "filter_cap_allowed",
+          "signature": "static bool filter_cap_allowed(unsigned r)"
+        },
+        {
+          "name": "filter_control_mask",
+          "signature": "static unsigned filter_control_mask(unsigned r)"
+        },
+        {
+          "name": "filter_probe_command",
+          "signature": "static bool filter_probe_command(const char *line)"
+        }
+      ],
+      "imports": [],
+      "docstrings": []
+    },
+    {
+      "file": "main/diagnostics/ring_probe.h",
+      "exports": [],
+      "functions": [
+        {
+          "name": "ring_probe_command",
+          "signature": "static bool ring_probe_command(const char *line)"
+        }
+      ],
+      "imports": [
+        "#include \"esp_cpu.h\"\n"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "main/families/c5_c6_c61/receiver.c",
+      "exports": [],
+      "functions": [
+        {
+          "name": "rx_analog_apply",
+          "signature": "static void rx_analog_apply(unsigned saved[2])"
+        },
+        {
+          "name": "rx_analog_restore",
+          "signature": "static void rx_analog_restore(const unsigned saved[2])"
+        },
+        {
+          "name": "cmd_parse",
+          "signature": "int cmd_parse(char *cmd, char *name, int *argc, char **argv)"
+        },
+        {
+          "name": "reply",
+          "signature": "static void reply(const char *s)"
+        },
+        {
+          "name": "prepare_rx",
+          "signature": "static void prepare_rx(void)"
+        },
+        {
+          "name": "acquire_iq",
+          "signature": "static bool acquire_iq(unsigned n, unsigned divider, unsigned *capture_us)"
+        },
+        {
+          "name": "spectrum_acquire",
+          "signature": "static bool spectrum_acquire(unsigned n, unsigned rate, const uint32_t **data, unsigned *elapsed)"
+        },
+        {
+          "name": "capture",
+          "signature": "static bool capture(unsigned n, unsigned divider, unsigned format)"
+        },
+        {
+          "name": "ring_test",
+          "signature": "static bool ring_test(const char *line)"
+        },
+        {
+          "name": "app_main",
+          "signature": "void app_main(void)"
+        },
+        {
+          "name": "handle_command",
+          "signature": "static void handle_command(char *line)"
+        },
+        {
+          "name": "if",
+          "signature": "else if (!strcmp(line, \"ALPF AUTO\"))"
+        },
+        {
+          "name": "if",
+          "signature": "else if (!strcmp(line, \"ALPF?\"))"
+        },
+        {
+          "name": "if",
+          "signature": "else if (!strcmp(line, \"LPF AUTO\"))"
+        },
+        {
+          "name": "if",
+          "signature": "else if (!strcmp(line, \"LPF?\"))"
+        }
+      ],
+      "imports": [
+        "#include <inttypes.h>\n",
+        "#include <stdbool.h>\n",
+        "#include <stdio.h>\n",
+        "#include <string.h>\n",
+        "#include \"driver/usb_serial_jtag.h\"\n",
+        "#include \"esp_cpu.h\"\n",
+        "#include \"esp_event.h\"\n",
+        "#include \"esp_log.h\"\n",
+        "#include \"esp_phy_cert_test.h\"\n",
+        "#include \"esp_rom_crc.h\"\n",
+        "#include \"esp_rom_sys.h\"\n",
+        "#include \"esp_timer.h\"\n",
+        "#include \"esp_wifi.h\"\n",
+        "#include \"freertos/FreeRTOS.h\"\n",
+        "#include \"freertos/task.h\"\n",
+        "#include \"heap_memory_layout.h\"\n",
+        "#include \"nvs_flash.h\"\n",
+        "#include \"soc/soc.h\"\n",
+        "#include \"riscv/rv_utils.h\"\n",
+        "#include \"hal/usb_serial_jtag_ll.h\"\n",
+        "#include \"chip.h\"\n",
+        "#include \"burst_serial.h\"\n",
+        "#include \"burst_gpio.h\"\n",
+        "#include \"burst_version.h\"\n",
+        "#include \"spectrum.h\"\n",
+        "#include \"ring_capture.h\"\n",
+        "#include \"rx_tuning.h\"\n",
+        "#include \"rx_recalibration.h\"\n",
+        "#include \"burst_gain.h\"\n",
+        "#include \"burst_limits.h\"\n",
+        "#include \"filter_probe.h\"\n",
+        "#include \"burst_capture.h\"\n",
+        "#include \"ring_probe.h\"\n",
+        "#include \"burst_commands.h\"\n"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "main/targets/esp32/receiver.c",
+      "exports": [],
+      "functions": [
+        {
+          "name": "filter_apply",
+          "signature": "static void filter_apply(void)"
+        },
+        {
+          "name": "filter_restore",
+          "signature": "static void filter_restore(void)"
+        },
+        {
+          "name": "reply",
+          "signature": "static void reply(const char *fmt, ...)"
+        },
+        {
+          "name": "prepare_rx",
+          "signature": "static void prepare_rx(void)"
+        },
+        {
+          "name": "acquire_iq",
+          "signature": "static bool acquire_iq(unsigned n, unsigned source, unsigned clock, unsigned *capture_us)"
+        },
+        {
+          "name": "spectrum_acquire",
+          "signature": "static bool spectrum_acquire(unsigned n, unsigned rate, const uint32_t **data, unsigned *elapsed)"
+        },
+        {
+          "name": "apply_gain",
+          "signature": "static void apply_gain(void)"
+        },
+        {
+          "name": "tune_rx",
+          "signature": "static void tune_rx(unsigned mhz)"
+        },
+        {
+          "name": "capture",
+          "signature": "static bool capture(unsigned n, unsigned rate, unsigned format)"
+        },
+        {
+          "name": "command",
+          "signature": "static void command(char *line)"
+        },
+        {
+          "name": "app_main",
+          "signature": "void app_main(void)"
+        }
+      ],
+      "imports": [
+        "#include <stdio.h>\n",
+        "#include <string.h>\n",
+        "#include <stdarg.h>\n",
+        "#include <inttypes.h>\n",
+        "#include \"freertos/FreeRTOS.h\"\n",
+        "#include \"freertos/task.h\"\n",
+        "#include \"burst_serial.h\"\n",
+        "#include \"burst_gpio.h\"\n",
+        "#include \"burst_version.h\"\n",
+        "#include \"spectrum.h\"\n",
+        "#include \"rx_recalibration.h\"\n",
+        "#include \"rx_tuning.h\"\n",
+        "#include \"rx_lo.h\"\n",
+        "#include \"rx_bandwidth.h\"\n",
+        "#include \"esp_wifi.h\"\n",
+        "#include \"esp_event.h\"\n",
+        "#include \"esp_log.h\"\n",
+        "#include \"esp_timer.h\"\n",
+        "#include \"esp_rom_sys.h\"\n",
+        "#include \"esp_rom_crc.h\"\n",
+        "#include \"esp_heap_caps.h\"\n",
+        "#include \"nvs_flash.h\"\n",
+        "#include \"soc/soc.h\"\n",
+        "#include \"soc/rtc.h\"\n",
+        "#include \"soc/dport_reg.h\"\n",
+        "#include \"soc/dport_access.h\"\n",
+        "#include \"heap_memory_layout.h\"\n",
+        "#include \"ring_probe.h\"\n",
+        "#include \"burst_capture.h\"\n",
+        "#include \"burst_commands.h\"\n"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "main/targets/esp32c2/heap_guard.c",
+      "exports": [],
+      "functions": [
+        {
+          "name": "__wrap_soc_get_available_memory_regions",
+          "signature": "size_t __wrap_soc_get_available_memory_regions(soc_memory_region_t *regions)"
+        }
+      ],
+      "imports": [
+        "#include \"heap_memory_layout.h\"\n"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "main/targets/esp32c2/receiver.c",
+      "exports": [],
+      "functions": [
+        {
+          "name": "rx_filter_apply",
+          "signature": "static void rx_filter_apply(void)"
+        },
+        {
+          "name": "rx_filter_restore",
+          "signature": "static void rx_filter_restore(void)"
+        },
+        {
+          "name": "frequency_valid",
+          "signature": "static bool frequency_valid(unsigned mhz)"
+        },
+        {
+          "name": "tune_rx",
+          "signature": "static void tune_rx(unsigned mhz)"
+        },
+        {
+          "name": "reply",
+          "signature": "static void reply(const char *s)"
+        },
+        {
+          "name": "prepare_rx",
+          "signature": "static void prepare_rx(void)"
+        },
+        {
+          "name": "acquire_iq",
+          "signature": "static bool acquire_iq(unsigned n, unsigned divider, unsigned *capture_us)"
+        },
+        {
+          "name": "spectrum_acquire",
+          "signature": "static bool spectrum_acquire(unsigned n, unsigned rate, const uint32_t **data, unsigned *elapsed)"
+        },
+        {
+          "name": "capture",
+          "signature": "static bool capture(unsigned n, unsigned divider, unsigned format)"
+        },
+        {
+          "name": "handle_command",
+          "signature": "static void handle_command(char *line)"
+        },
+        {
+          "name": "app_main",
+          "signature": "void app_main(void)"
+        }
+      ],
+      "imports": [
+        "#include <inttypes.h>\n",
+        "#include <stdbool.h>\n",
+        "#include <stdio.h>\n",
+        "#include <string.h>\n",
+        "#include \"esp_event.h\"\n",
+        "#include \"esp_cpu.h\"\n",
+        "#include \"esp_rom_sys.h\"\n",
+        "#include \"esp_log.h\"\n",
+        "#include \"esp_rom_crc.h\"\n",
+        "#include \"esp_timer.h\"\n",
+        "#include \"esp_wifi.h\"\n",
+        "#include \"freertos/FreeRTOS.h\"\n",
+        "#include \"freertos/task.h\"\n",
+        "#include \"heap_memory_layout.h\"\n",
+        "#include \"nvs_flash.h\"\n",
+        "#include \"soc/soc.h\"\n",
+        "#include \"burst_serial.h\"\n",
+        "#include \"burst_gpio.h\"\n",
+        "#include \"burst_version.h\"\n",
+        "#include \"spectrum.h\"\n",
+        "#include \"rx_recalibration.h\"\n",
+        "#include \"rx_tuning.h\"\n",
+        "#include \"rx_lo.h\"\n",
+        "#include \"burst_gain.h\"\n",
+        "#include \"burst_limits.h\"\n",
+        "#include \"burst_capture.h\"\n",
+        "#include \"burst_commands.h\"\n"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "main/targets/esp32c3/receiver.c",
+      "exports": [],
+      "functions": [
+        {
+          "name": "rx_filter_apply",
+          "signature": "static void rx_filter_apply(void)"
+        },
+        {
+          "name": "rx_filter_restore",
+          "signature": "static void rx_filter_restore(void)"
+        },
+        {
+          "name": "frequency_valid",
+          "signature": "static bool frequency_valid(unsigned mhz)"
+        },
+        {
+          "name": "tune_rx",
+          "signature": "static void tune_rx(unsigned mhz)"
+        },
+        {
+          "name": "reply",
+          "signature": "static void reply(const char *s)"
+        },
+        {
+          "name": "prepare_rx",
+          "signature": "static void prepare_rx(void)"
+        },
+        {
+          "name": "acquire_iq",
+          "signature": "static bool acquire_iq(unsigned n, unsigned divider, unsigned *capture_us)"
+        },
+        {
+          "name": "spectrum_acquire",
+          "signature": "static bool spectrum_acquire(unsigned n, unsigned rate, const uint32_t **data, unsigned *elapsed)"
+        },
+        {
+          "name": "capture",
+          "signature": "static bool capture(unsigned n, unsigned divider, unsigned format)"
+        },
+        {
+          "name": "handle_command",
+          "signature": "static void handle_command(char *line)"
+        },
+        {
+          "name": "app_main",
+          "signature": "void app_main(void)"
+        }
+      ],
+      "imports": [
+        "#include <inttypes.h>\n",
+        "#include <stdbool.h>\n",
+        "#include <stdio.h>\n",
+        "#include <string.h>\n",
+        "#include \"driver/usb_serial_jtag.h\"\n",
+        "#include \"esp_event.h\"\n",
+        "#include \"esp_log.h\"\n",
+        "#include \"esp_rom_crc.h\"\n",
+        "#include \"esp_timer.h\"\n",
+        "#include \"esp_wifi.h\"\n",
+        "#include \"freertos/FreeRTOS.h\"\n",
+        "#include \"freertos/task.h\"\n",
+        "#include \"heap_memory_layout.h\"\n",
+        "#include \"nvs_flash.h\"\n",
+        "#include \"soc/soc.h\"\n",
+        "#include \"burst_serial.h\"\n",
+        "#include \"burst_gpio.h\"\n",
+        "#include \"burst_version.h\"\n",
+        "#include \"spectrum.h\"\n",
+        "#include \"rx_recalibration.h\"\n",
+        "#include \"rx_tuning.h\"\n",
+        "#include \"rx_lo.h\"\n",
+        "#include \"esp_rom_sys.h\"\n",
+        "#include \"burst_gain.h\"\n",
+        "#include \"burst_limits.h\"\n",
+        "#include \"burst_capture.h\"\n",
+        "#include \"ring_probe.h\"\n",
+        "#include \"burst_commands.h\"\n"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "main/targets/esp32c5/chip.h",
+      "exports": [],
+      "functions": [
+        {
+          "name": "stock_capture",
+          "signature": "static bool stock_capture(unsigned n, unsigned divider)"
+        },
+        {
+          "name": "frequency_valid",
+          "signature": "static bool frequency_valid(unsigned mhz)"
+        }
+      ],
+      "imports": [
+        "#include \"rx_tuning.h\"\n",
+        "#include \"tuning.h\"\n"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "main/targets/esp32c5/tuning.h",
+      "exports": [],
+      "functions": [
+        {
+          "name": "c5_set_chan",
+          "signature": "static void c5_set_chan(unsigned mhz, unsigned mode)"
+        }
+      ],
+      "imports": [],
+      "docstrings": []
+    },
+    {
+      "file": "main/targets/esp32c6/chip.h",
+      "exports": [],
+      "functions": [
+        {
+          "name": "c6_set_chan",
+          "signature": "static void c6_set_chan(unsigned mhz, unsigned mode)"
+        },
+        {
+          "name": "frequency_valid",
+          "signature": "static bool frequency_valid(unsigned f)"
+        },
+        {
+          "name": "stock_capture",
+          "signature": "static bool stock_capture(unsigned n, unsigned rate)"
+        }
+      ],
+      "imports": [
+        "#include \"rx_tuning.h\"\n",
+        "#include \"rx_lo.h\"\n"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "main/targets/esp32c61/chip.h",
+      "exports": [],
+      "functions": [
+        {
+          "name": "stock_capture",
+          "signature": "static bool stock_capture(unsigned n, unsigned divider)"
+        }
+      ],
+      "imports": [
+        "#include \"tuning.h\"\n"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "main/targets/esp32c61/tuning.h",
+      "exports": [],
+      "functions": [
+        {
+          "name": "frequency_valid",
+          "signature": "static bool frequency_valid(unsigned mhz)"
+        },
+        {
+          "name": "c61_set_chan",
+          "signature": "static void c61_set_chan(unsigned mhz, unsigned mode)"
+        }
+      ],
+      "imports": [
+        "#include \"rx_tuning.h\"\n",
+        "#include \"rx_pll_cal.h\"\n"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "main/targets/esp32h2/receiver.c",
+      "exports": [],
+      "functions": [
+        {
+          "name": "frequency_valid",
+          "signature": "static bool frequency_valid(unsigned mhz)"
+        },
+        {
+          "name": "tune_rx",
+          "signature": "static void tune_rx(unsigned mhz)"
+        },
+        {
+          "name": "reply",
+          "signature": "static void reply(const char *s)"
+        },
+        {
+          "name": "prepare_rx",
+          "signature": "static void prepare_rx(void)"
+        },
+        {
+          "name": "rx_filter_apply",
+          "signature": "static void rx_filter_apply(void)"
+        },
+        {
+          "name": "rx_filter_restore",
+          "signature": "static void rx_filter_restore(void)"
+        },
+        {
+          "name": "dump_iq(unsigned n, unsigned divider, unsigned *capture_us)",
+          "signature": "static const char *dump_iq(unsigned n, unsigned divider, unsigned *capture_us)"
+        },
+        {
+          "name": "probe_peak",
+          "signature": "static unsigned probe_peak(void)"
+        },
+        {
+          "name": "software_agc",
+          "signature": "static void software_agc(unsigned divider)"
+        },
+        {
+          "name": "acquire_iq",
+          "signature": "static bool acquire_iq(unsigned n, unsigned divider, unsigned *capture_us)"
+        },
+        {
+          "name": "spectrum_acquire",
+          "signature": "static bool spectrum_acquire(unsigned n, unsigned rate, const uint32_t **data, unsigned *elapsed)"
+        },
+        {
+          "name": "capture",
+          "signature": "static bool capture(unsigned n, unsigned divider, unsigned format)"
+        },
+        {
+          "name": "handle_command",
+          "signature": "static void handle_command(char *line)"
+        },
+        {
+          "name": "app_main",
+          "signature": "void app_main(void)"
+        }
+      ],
+      "imports": [
+        "#include <inttypes.h>\n",
+        "#include <math.h>\n",
+        "#include <stdbool.h>\n",
+        "#include <stdio.h>\n",
+        "#include <string.h>\n",
+        "#include \"driver/usb_serial_jtag.h\"\n",
+        "#include \"esp_phy_init.h\"\n",
+        "#include \"esp_log.h\"\n",
+        "#include \"esp_rom_crc.h\"\n",
+        "#include \"esp_timer.h\"\n",
+        "#include \"freertos/FreeRTOS.h\"\n",
+        "#include \"freertos/task.h\"\n",
+        "#include \"heap_memory_layout.h\"\n",
+        "#include \"nvs_flash.h\"\n",
+        "#include \"soc/soc.h\"\n",
+        "#include \"burst_serial.h\"\n",
+        "#include \"burst_gpio.h\"\n",
+        "#include \"burst_version.h\"\n",
+        "#include \"spectrum.h\"\n",
+        "#include \"rx_recalibration.h\"\n",
+        "#include \"rx_tuning.h\"\n",
+        "#include \"burst_gain.h\"\n",
+        "#include \"burst_limits.h\"\n",
+        "#include \"burst_capture.h\"\n",
+        "#include \"burst_commands.h\"\n"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "main/targets/esp32s2/pll.h",
+      "exports": [],
+      "functions": [
+        {
+          "name": "s2_pll_calibrate",
+          "signature": "static bool s2_pll_calibrate(void)"
+        }
+      ],
+      "imports": [],
+      "docstrings": []
+    },
+    {
+      "file": "main/targets/esp32s2/receiver.c",
+      "exports": [],
+      "functions": [
+        {
+          "name": "s2_tune",
+          "signature": "static void s2_tune(unsigned mhz)"
+        },
+        {
+          "name": "frequency_valid",
+          "signature": "static bool frequency_valid(unsigned mhz)"
+        },
+        {
+          "name": "force_rx_gain",
+          "signature": "static void force_rx_gain(unsigned manual, unsigned index, unsigned unused)"
+        },
+        {
+          "name": "rx_filter_apply",
+          "signature": "static void rx_filter_apply(void)"
+        },
+        {
+          "name": "rx_filter_restore",
+          "signature": "static void rx_filter_restore(void)"
+        },
+        {
+          "name": "cmd_parse",
+          "signature": "int cmd_parse(char *cmd, char *name, int *argc, char **argv)"
+        },
+        {
+          "name": "reply",
+          "signature": "static void reply(const char *s)"
+        },
+        {
+          "name": "prepare_rx",
+          "signature": "static void prepare_rx(void)"
+        },
+        {
+          "name": "acquire_iq",
+          "signature": "static bool acquire_iq(unsigned n, unsigned divider, unsigned *capture_us)"
+        },
+        {
+          "name": "spectrum_acquire",
+          "signature": "static bool spectrum_acquire(unsigned n, unsigned rate, const uint32_t **data, unsigned *elapsed)"
+        },
+        {
+          "name": "capture",
+          "signature": "static bool capture(unsigned n, unsigned divider, unsigned format)"
+        },
+        {
+          "name": "handle_command",
+          "signature": "static void handle_command(char *line)"
+        },
+        {
+          "name": "app_main",
+          "signature": "void app_main(void)"
+        }
+      ],
+      "imports": [
+        "#include <inttypes.h>\n",
+        "#include <stdbool.h>\n",
+        "#include <stdio.h>\n",
+        "#include <string.h>\n",
+        "#include \"esp_cpu.h\"\n",
+        "#include \"esp_event.h\"\n",
+        "#include \"esp_log.h\"\n",
+        "#include \"esp_phy_cert_test.h\"\n",
+        "#include \"esp_rom_crc.h\"\n",
+        "#include \"esp_timer.h\"\n",
+        "#include \"esp_wifi.h\"\n",
+        "#include \"freertos/FreeRTOS.h\"\n",
+        "#include \"freertos/task.h\"\n",
+        "#include \"heap_memory_layout.h\"\n",
+        "#include \"nvs_flash.h\"\n",
+        "#include \"soc/soc.h\"\n",
+        "#include \"burst_serial.h\"\n",
+        "#include \"burst_gpio.h\"\n",
+        "#include \"burst_version.h\"\n",
+        "#include \"spectrum.h\"\n",
+        "#include \"rx_recalibration.h\"\n",
+        "#include \"rx_tuning.h\"\n",
+        "#include \"rx_lo.h\"\n",
+        "#include \"esp_rom_sys.h\"\n",
+        "#include \"pll.h\"\n",
+        "#include \"burst_gain.h\"\n",
+        "#include \"burst_limits.h\"\n",
+        "#include \"burst_capture.h\"\n",
+        "#include \"ring_probe.h\"\n",
+        "#include \"dump_probe.h\"\n",
+        "#include \"burst_commands.h\"\n"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "main/targets/esp32s3/receiver.c",
+      "exports": [],
+      "functions": [
+        {
+          "name": "s3_tune",
+          "signature": "static void s3_tune(unsigned mhz)"
+        },
+        {
+          "name": "frequency_valid",
+          "signature": "static bool frequency_valid(unsigned mhz)"
+        },
+        {
+          "name": "rx_filter_apply",
+          "signature": "static void rx_filter_apply(void)"
+        },
+        {
+          "name": "rx_filter_restore",
+          "signature": "static void rx_filter_restore(void)"
+        },
+        {
+          "name": "cmd_parse",
+          "signature": "int cmd_parse(char *cmd, char *name, int *argc, char **argv)"
+        },
+        {
+          "name": "reply",
+          "signature": "static void reply(const char *s)"
+        },
+        {
+          "name": "prepare_rx",
+          "signature": "static void prepare_rx(void)"
+        },
+        {
+          "name": "gain_reconfigure",
+          "signature": "static void gain_reconfigure(void)"
+        },
+        {
+          "name": "capture",
+          "signature": "static bool capture(unsigned n, unsigned divider, unsigned format)"
+        },
+        {
+          "name": "ring_report",
+          "signature": "static void ring_report(const char *tag, const ring_result_t *r)"
+        },
+        {
+          "name": "ring_send_capture",
+          "signature": "static void ring_send_capture(const ring_result_t *r, unsigned rate)"
+        },
+        {
+          "name": "ring_command",
+          "signature": "static bool ring_command(const char *line)"
+        },
+        {
+          "name": "handle_command",
+          "signature": "static void handle_command(char *line)"
+        },
+        {
+          "name": "if",
+          "signature": "else if (!strcmp(line, \"ADCCLOCK?\"))"
+        },
+        {
+          "name": "app_main",
+          "signature": "void app_main(void)"
+        }
+      ],
+      "imports": [
+        "#include <inttypes.h>\n",
+        "#include <stdbool.h>\n",
+        "#include <stdio.h>\n",
+        "#include <string.h>\n",
+        "#include \"driver/usb_serial_jtag.h\"\n",
+        "#include \"esp_cpu.h\"\n",
+        "#include \"esp_event.h\"\n",
+        "#include \"esp_heap_caps.h\"\n",
+        "#include \"esp_log.h\"\n",
+        "#include \"esp_phy_cert_test.h\"\n",
+        "#include \"esp_rom_crc.h\"\n",
+        "#include \"esp_timer.h\"\n",
+        "#include \"esp_wifi.h\"\n",
+        "#include \"freertos/FreeRTOS.h\"\n",
+        "#include \"freertos/task.h\"\n",
+        "#include \"heap_memory_layout.h\"\n",
+        "#include \"nvs_flash.h\"\n",
+        "#include \"soc/soc.h\"\n",
+        "#include \"burst_parse.h\"\n",
+        "#include \"burst_serial.h\"\n",
+        "#include \"burst_gpio.h\"\n",
+        "#include \"burst_version.h\"\n",
+        "#include \"rx_recalibration.h\"\n",
+        "#include \"rx_tuning.h\"\n",
+        "#include \"rx_lo.h\"\n",
+        "#include \"esp_rom_sys.h\"\n",
+        "#include \"ring_capture.h\"\n",
+        "#include \"burst_gain.h\"\n",
+        "#include \"burst_limits.h\"\n",
+        "#include \"filter_probe.h\"\n",
+        "#include \"dump_probe.h\"\n",
+        "#include \"burst_capture.h\"\n",
+        "#include \"burst_commands.h\"\n"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "main/targets/esp32s31/burst/receiver.c",
+      "exports": [],
+      "functions": [
+        {
+          "name": "cmd_parse",
+          "signature": "int cmd_parse(char *cmd, char *name, int *argc, char **argv)"
+        },
+        {
+          "name": "filter_apply",
+          "signature": "static void filter_apply(void)"
+        },
+        {
+          "name": "filter_restore",
+          "signature": "static void filter_restore(void)"
+        },
+        {
+          "name": "reply",
+          "signature": "static void reply(const char *fmt, ...)"
+        },
+        {
+          "name": "prepare_rx",
+          "signature": "static void prepare_rx(void)"
+        },
+        {
+          "name": "anonymous",
+          "signature": "dump_init (void)"
+        },
+        {
+          "name": "acquire",
+          "signature": "static unsigned IRAM_ATTR acquire(unsigned n, unsigned divider, unsigned *end)"
+        },
+        {
+          "name": "acquire_iq",
+          "signature": "static bool acquire_iq(unsigned n, unsigned divider, unsigned *capture_us)"
+        },
+        {
+          "name": "spectrum_acquire",
+          "signature": "static bool spectrum_acquire(unsigned n, unsigned rate, const uint32_t **data, unsigned *elapsed)"
+        },
+        {
+          "name": "ring_probe_run",
+          "signature": "static unsigned IRAM_ATTR ring_probe_run(unsigned divider, unsigned *last, uint32_t live[4],\n                                         bool release_bank)"
+        },
+        {
+          "name": "ring_probe_command",
+          "signature": "static bool ring_probe_command(const char *line)"
+        },
+        {
+          "name": "capture",
+          "signature": "static bool capture(unsigned n, unsigned divider, unsigned format)"
+        },
+        {
+          "name": "apply_gain",
+          "signature": "static void apply_gain(void)"
+        },
+        {
+          "name": "capture_rate",
+          "signature": "static bool capture_rate(unsigned n, unsigned rate, unsigned format)"
+        },
+        {
+          "name": "command",
+          "signature": "static void command(char *line)"
+        },
+        {
+          "name": "app_main",
+          "signature": "void app_main(void)"
+        }
+      ],
+      "imports": [
+        "#include <stdio.h>\n",
+        "#include <assert.h>\n",
+        "#include <string.h>\n",
+        "#include <stdarg.h>\n",
+        "#include <inttypes.h>\n",
+        "#include \"freertos/FreeRTOS.h\"\n",
+        "#include \"freertos/task.h\"\n",
+        "#include \"burst_serial.h\"\n",
+        "#include \"burst_gpio.h\"\n",
+        "#include \"burst_version.h\"\n",
+        "#include \"spectrum.h\"\n",
+        "#include \"rx_tuning.h\"\n",
+        "#include \"rx_bandwidth.h\"\n",
+        "#include \"esp_wifi.h\"\n",
+        "#include \"esp_event.h\"\n",
+        "#include \"esp_log.h\"\n",
+        "#include \"esp_timer.h\"\n",
+        "#include \"esp_rom_sys.h\"\n",
+        "#include \"esp_rom_crc.h\"\n",
+        "#include \"nvs_flash.h\"\n",
+        "#include \"soc/soc.h\"\n",
+        "#include \"soc/hp_system_reg.h\"\n",
+        "#include \"esp_ipc_isr.h\"\n",
+        "#include \"esp_cpu.h\"\n",
+        "#include \"esp_system.h\"\n",
+        "#include \"esp_phy_cert_test.h\"\n",
+        "#include \"driver/usb_serial_jtag.h\"\n",
+        "#include \"heap_memory_layout.h\"\n",
+        "#include \"tuning.h\"\n",
+        "#include \"s31_spectrum.h\"\n",
+        "#include \"burst_capture.h\"\n"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "main/targets/esp32s31/burst/s31_spectrum.h",
+      "exports": [],
+      "functions": [
+        {
+          "name": "s31_bank(unsigned b)",
+          "signature": "static inline volatile uint32_t *s31_bank(unsigned b)"
+        },
+        {
+          "name": "s31_select",
+          "signature": "static void IRAM_ATTR s31_select(unsigned bank)"
+        },
+        {
+          "name": "s31_mark",
+          "signature": "static void IRAM_ATTR s31_mark(unsigned b, unsigned at, unsigned n)"
+        },
+        {
+          "name": "s31_boundary",
+          "signature": "static unsigned IRAM_ATTR s31_boundary(unsigned b, unsigned at, unsigned n, bool end)"
+        },
+        {
+          "name": "s31_send",
+          "signature": "static bool s31_send(const void *data, unsigned size)"
+        },
+        {
+          "name": "anonymous",
+          "signature": "s31_pump (void)"
+        },
+        {
+          "name": "s31_put16",
+          "signature": "static void s31_put16(unsigned at, uint16_t v)"
+        },
+        {
+          "name": "s31_put32",
+          "signature": "static void s31_put32(unsigned at, uint32_t v)"
+        },
+        {
+          "name": "s31_emit",
+          "signature": "static void s31_emit(unsigned ffts, unsigned pairs, uint64_t index, unsigned gain, bool gaps)"
+        },
+        {
+          "name": "s31_accumulate",
+          "signature": "static void __attribute__((noinline)) s31_accumulate(const int16_t *restrict x, float *restrict power,\n                                                     unsigned n, bool maximum)"
+        },
+        {
+          "name": "s31_worker",
+          "signature": "static void s31_worker(void *arg)"
+        },
+        {
+          "name": "s31_spectrum_init",
+          "signature": "static bool s31_spectrum_init(void)"
+        },
+        {
+          "name": "s31_run",
+          "signature": "static void IRAM_ATTR s31_run(unsigned *status, unsigned *detail, unsigned *units, uint64_t *pairs,\n                              unsigned *stopped)"
+        },
+        {
+          "name": "s31_profiles",
+          "signature": "static void s31_profiles(void)"
+        },
+        {
+          "name": "s31_spectrum_command",
+          "signature": "static bool s31_spectrum_command(const char *line)"
+        }
+      ],
+      "imports": [
+        "#include <stdatomic.h>\n",
+        "#include <math.h>\n",
+        "#include \"dsps_fft2r.h\"\n",
+        "#include \"spectrum_dc.h\"\n",
+        "#include \"spectrum_stats.h\"\n",
+        "#include \"ring_io.h\"\n",
+        "#include \"esp_heap_caps.h\"\n"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "main/targets/esp32s31/streaming/control.c",
+      "exports": [],
+      "functions": [
+        {
+          "name": "stream_record_drop",
+          "signature": "void stream_record_drop(uint64_t samples, stream_drop_t reason)"
+        },
+        {
+          "name": "stream_wake_sender",
+          "signature": "void stream_wake_sender(void)"
+        },
+        {
+          "name": "error(const char *message)",
+          "signature": "static cJSON *error(const char *message)"
+        },
+        {
+          "name": "status(void)",
+          "signature": "static cJSON *status(void)"
+        },
+        {
+          "name": "number",
+          "signature": "static bool number(const cJSON *obj, const char *key, uint32_t *value, uint32_t low, uint32_t high,\n                   uint32_t step)"
+        },
+        {
+          "name": "control_init",
+          "signature": "void control_init(void)"
+        },
+        {
+          "name": "control_request(const cJSON *request, stream_owner_t caller, const char *peer)",
+          "signature": "cJSON *control_request(const cJSON *request, stream_owner_t caller, const char *peer)"
+        },
+        {
+          "name": "stream_sender",
+          "signature": "void stream_sender(void *arg)"
+        }
+      ],
+      "imports": [
+        "#include \"esp_heap_caps.h\"\n",
+        "#include \"esp_timer.h\"\n",
+        "#include \"freertos/FreeRTOS.h\"\n",
+        "#include \"freertos/semphr.h\"\n",
+        "#include \"freertos/task.h\"\n",
+        "#include \"stream.h\"\n",
+        "#include <math.h>\n",
+        "#include <string.h>\n"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "main/targets/esp32s31/streaming/dc.c",
+      "exports": [],
+      "functions": [
+        {
+          "name": "clamp_code",
+          "signature": "static int clamp_code(int value)"
+        },
+        {
+          "name": "dc_apply",
+          "signature": "static void dc_apply(int i, int q)"
+        },
+        {
+          "name": "dc_cost",
+          "signature": "static float dc_cost(const float m[2])"
+        },
+        {
+          "name": "receiver_dc_calibrate",
+          "signature": "void receiver_dc_calibrate(bool (*dc_measure)(float mean[2]))"
+        }
+      ],
+      "imports": [
+        "#include \"freertos/FreeRTOS.h\"\n",
+        "#include \"freertos/task.h\"\n",
+        "#include \"stream.h\"\n",
+        "#include \"burst_gain_table.h\"\n",
+        "#include \"soc/soc.h\"\n",
+        "#include <math.h>\n",
+        "#include <string.h>\n"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "main/targets/esp32s31/streaming/network.c",
+      "exports": [],
+      "functions": [
+        {
+          "name": "resolve_destination",
+          "signature": "static void resolve_destination(void *arg)"
+        },
+        {
+          "name": "logo",
+          "signature": "static esp_err_t logo(httpd_req_t *req)"
+        },
+        {
+          "name": "page",
+          "signature": "static esp_err_t page(httpd_req_t *req)"
+        },
+        {
+          "name": "api",
+          "signature": "static esp_err_t api(httpd_req_t *req)"
+        },
+        {
+          "name": "got_ip",
+          "signature": "static void got_ip(void *arg, esp_event_base_t base, int32_t id, void *data)"
+        },
+        {
+          "name": "link_event",
+          "signature": "static void link_event(void *arg, esp_event_base_t base, int32_t id, void *data)"
+        },
+        {
+          "name": "network_destination",
+          "signature": "bool network_destination(const char *address, unsigned port)"
+        },
+        {
+          "name": "network_send",
+          "signature": "bool network_send(const stream_packet_t *p)"
+        },
+        {
+          "name": "network_init",
+          "signature": "void network_init(void)"
+        }
+      ],
+      "imports": [
+        "#include \"esp_eth.h\"\n",
+        "#include \"esp_event.h\"\n",
+        "#include \"esp_http_server.h\"\n",
+        "#include \"esp_log.h\"\n",
+        "#include \"esp_netif.h\"\n",
+        "#include \"esp_netif_net_stack.h\"\n",
+        "#include \"esp_rom_sys.h\"\n",
+        "#include \"esp_timer.h\"\n",
+        "#include \"freertos/semphr.h\"\n",
+        "#include \"lwip/etharp.h\"\n",
+        "#include \"lwip/inet.h\"\n",
+        "#include \"lwip/sockets.h\"\n",
+        "#include \"lwip/tcpip.h\"\n",
+        "#include \"stream.h\"\n",
+        "#include <stdio.h>\n",
+        "#include <string.h>\n"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "main/targets/esp32s31/streaming/receiver.c",
+      "exports": [],
+      "functions": [
+        {
+          "name": "receiver_transport_lost",
+          "signature": "void receiver_transport_lost(stream_owner_t owner)"
+        },
+        {
+          "name": "cmd_parse",
+          "signature": "int cmd_parse(char *cmd, char *name, int *argc, char **argv)"
+        },
+        {
+          "name": "prepare_rx",
+          "signature": "static void prepare_rx(void)"
+        },
+        {
+          "name": "radio_configure",
+          "signature": "static void radio_configure(const receiver_config_t *c)"
+        },
+        {
+          "name": "anonymous",
+          "signature": "diagnostic_start (void)"
+        },
+        {
+          "name": "dma_done",
+          "signature": "static bool IRAM_ATTR dma_done(parlio_rx_unit_handle_t u, const parlio_rx_event_data_t *e, void *arg)"
+        },
+        {
+          "name": "stop_dma",
+          "signature": "static void stop_dma(void)"
+        },
+        {
+          "name": "dc_measure",
+          "signature": "static bool dc_measure(float mean[2])"
+        },
+        {
+          "name": "anonymous",
+          "signature": "clock_reference (void)"
+        },
+        {
+          "name": "clock_word",
+          "signature": "static uint16_t clock_word(unsigned w)"
+        },
+        {
+          "name": "clock_calibrate",
+          "signature": "static bool clock_calibrate(void)"
+        },
+        {
+          "name": "capture_loop",
+          "signature": "static void capture_loop(void *arg)"
+        },
+        {
+          "name": "receiver_init",
+          "signature": "void receiver_init(void)"
+        },
+        {
+          "name": "receiver_apply",
+          "signature": "esp_err_t receiver_apply(const receiver_config_t *c, stream_owner_t owner)"
+        },
+        {
+          "name": "app_main",
+          "signature": "void app_main(void)"
+        }
+      ],
+      "imports": [
+        "#include \"driver/gpio.h\"\n",
+        "#include \"driver/parlio_rx.h\"\n",
+        "#include \"esp_clock_output.h\"\n",
+        "#include \"esp_cpu.h\"\n",
+        "#include \"esp_event.h\"\n",
+        "#include \"esp_heap_caps.h\"\n",
+        "#include \"esp_ipc_isr.h\"\n",
+        "#include \"esp_log.h\"\n",
+        "#include \"esp_phy_cert_test.h\"\n",
+        "#include \"esp_rom_gpio.h\"\n",
+        "#include \"esp_private/esp_clk_tree_common.h\"\n",
+        "#include \"esp_private/parlio_rx_private.h\"\n",
+        "#include \"esp_private/esp_gpio_reserve.h\"\n",
+        "#include \"esp_rom_sys.h\"\n",
+        "#include \"esp_timer.h\"\n",
+        "#include \"esp_wifi.h\"\n",
+        "#include \"freertos/FreeRTOS.h\"\n",
+        "#include \"freertos/queue.h\"\n",
+        "#include \"freertos/task.h\"\n",
+        "#include \"hal/parlio_ll.h\"\n",
+        "#include \"heap_memory_layout.h\"\n",
+        "#include \"modem/modem_widgets_reg.h\"\n",
+        "#include \"nvs_flash.h\"\n",
+        "#include \"rx_bandwidth.h\"\n",
+        "#include \"soc/gpio_sig_map.h\"\n",
+        "#include \"soc/hp_system_reg.h\"\n",
+        "#include \"stream.h\"\n",
+        "#include <string.h>\n",
+        "#include \"tuning.h\"\n"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "main/targets/esp32s31/streaming/stream.h",
+      "exports": [],
+      "functions": [
+        {
+          "name": "receiver_bandwidth",
+          "signature": "static inline uint32_t receiver_bandwidth(const receiver_config_t *config)"
+        },
+        {
+          "name": "stream_load",
+          "signature": "static inline uint32_t stream_load(const uint32_t *p)"
+        },
+        {
+          "name": "stream_store",
+          "signature": "static inline void stream_store(uint32_t *p, uint32_t v)"
+        }
+      ],
+      "imports": [
+        "#include \"cJSON.h\"\n",
+        "#include \"esp_err.h\"\n",
+        "#include <stdbool.h>\n",
+        "#include <stddef.h>\n",
+        "#include <stdint.h>\n"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "main/targets/esp32s31/streaming/usb.c",
+      "exports": [],
+      "functions": [
+        {
+          "name": "init",
+          "signature": "static void init(void)"
+        },
+        {
+          "name": "deinit",
+          "signature": "static bool deinit(void)"
+        },
+        {
+          "name": "reset",
+          "signature": "static void reset(uint8_t rhport)"
+        },
+        {
+          "name": "open_driver",
+          "signature": "static uint16_t open_driver(uint8_t rhport, const tusb_desc_interface_t *itf, uint16_t maxlen)"
+        },
+        {
+          "name": "control_cb",
+          "signature": "static bool control_cb(uint8_t p, uint8_t stage, const tusb_control_request_t *r)"
+        },
+        {
+          "name": "submit_response",
+          "signature": "static void submit_response(void *context)"
+        },
+        {
+          "name": "control_worker",
+          "signature": "static void control_worker(void *arg)"
+        },
+        {
+          "name": "transfer",
+          "signature": "static bool transfer(uint8_t p, uint8_t ep, xfer_result_t result, uint32_t bytes)"
+        },
+        {
+          "name": "usbd_app_driver_get_cb(uint8_t *count)",
+          "signature": "const usbd_class_driver_t *usbd_app_driver_get_cb(uint8_t *count)"
+        },
+        {
+          "name": "usb_ready",
+          "signature": "bool usb_ready(void)"
+        },
+        {
+          "name": "usb_send_and_retire",
+          "signature": "bool usb_send_and_retire(const void *data, size_t bytes, uint32_t tail_after_copy)"
+        },
+        {
+          "name": "usb_init",
+          "signature": "void usb_init(void)"
+        }
+      ],
+      "imports": [
+        "#include \"device/usbd_pvt.h\"\n",
+        "#include \"esp_heap_caps.h\"\n",
+        "#include \"esp_log.h\"\n",
+        "#include \"esp_mac.h\"\n",
+        "#include \"freertos/FreeRTOS.h\"\n",
+        "#include \"freertos/semphr.h\"\n",
+        "#include \"freertos/queue.h\"\n",
+        "#include \"freertos/task.h\"\n",
+        "#include \"stream.h\"\n",
+        "#include \"tinyusb.h\"\n",
+        "#include \"tinyusb_default_config.h\"\n",
+        "#include <stdio.h>\n",
+        "#include <string.h>\n"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "main/targets/esp32s31/tuning.h",
+      "exports": [],
+      "functions": [
+        {
+          "name": "s31_tune",
+          "signature": "static void s31_tune(unsigned mhz)"
+        }
+      ],
+      "imports": [
+        "#include \"rx_pll_cal.h\"\n",
+        "#include \"rx_recalibration.h\"\n"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "platform/esp32s2/esp_usb_cdc_rom_console/include/esp_private/esp_vfs_cdcacm.h",
+      "exports": [],
+      "functions": [],
+      "imports": [
+        "#include \"esp_err.h\"\n",
+        "#include \"esp_vfs_common.h\"\n",
+        "#include \"../esp_vfs_cdcacm.h\" /* use relative path to make sure we include the correct header */\n",
+        "#include \"esp_vfs_ops.h\"\n"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "platform/esp32s2/esp_usb_cdc_rom_console/include/esp_private/esp_vfs_cdcacm_select.h",
+      "exports": [],
+      "functions": [],
+      "imports": [
+        "#include \"freertos/FreeRTOS.h\"\n"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "platform/esp32s2/esp_usb_cdc_rom_console/include/esp_private/usb_console.h",
+      "exports": [],
+      "functions": [],
+      "imports": [
+        "#include <stdbool.h>\n",
+        "#include <stddef.h>\n",
+        "#include <stdint.h>\n",
+        "#include \"esp_err.h\"\n"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "platform/esp32s2/esp_usb_cdc_rom_console/include/esp_vfs_cdcacm.h",
+      "exports": [],
+      "functions": [],
+      "imports": [
+        "#include \"esp_err.h\"\n",
+        "#include \"esp_vfs_common.h\"\n"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "platform/esp32s2/esp_usb_cdc_rom_console/usb_console.c",
+      "exports": [],
+      "functions": [
+        {
+          "name": "esp_usb_console_osglue_dis_int",
+          "signature": "void esp_usb_console_osglue_dis_int(void)"
+        },
+        {
+          "name": "esp_usb_console_osglue_ena_int",
+          "signature": "void esp_usb_console_osglue_ena_int(void)"
+        },
+        {
+          "name": "esp_usb_console_osglue_wait_proc",
+          "signature": "int esp_usb_console_osglue_wait_proc(int delay_us)"
+        },
+        {
+          "name": "cdcacm_set_select_notif_callback",
+          "signature": "void cdcacm_set_select_notif_callback(cdcacm_select_notif_callback_t cdcacm_select_notif_callback)"
+        },
+        {
+          "name": "esp_usb_console_cdc_acm_cb",
+          "signature": "void esp_usb_console_cdc_acm_cb(cdc_acm_device *dev, int status)"
+        },
+        {
+          "name": "esp_usb_console_dfu_detach_cb",
+          "signature": "void esp_usb_console_dfu_detach_cb(int timeout)"
+        },
+        {
+          "name": "esp_usb_console_interrupt",
+          "signature": "void esp_usb_console_interrupt(void *arg)"
+        },
+        {
+          "name": "esp_usb_console_on_restart_timeout",
+          "signature": "void esp_usb_console_on_restart_timeout(void *arg)"
+        },
+        {
+          "name": "esp_usb_console_poll_interrupts",
+          "signature": "void esp_usb_console_poll_interrupts(void)"
+        },
+        {
+          "name": "esp_usb_console_before_restart",
+          "signature": "void esp_usb_console_before_restart(void)"
+        },
+        {
+          "name": "esp_usb_console_rom_cleanup",
+          "signature": "static void esp_usb_console_rom_cleanup(void)"
+        },
+        {
+          "name": "esp_usb_console_init",
+          "signature": "esp_err_t esp_usb_console_init(void)"
+        },
+        {
+          "name": "esp_usb_console_flush_internal",
+          "signature": "ssize_t esp_usb_console_flush_internal(size_t last_write_size)"
+        },
+        {
+          "name": "esp_usb_console_flush",
+          "signature": "ssize_t esp_usb_console_flush(void)"
+        },
+        {
+          "name": "esp_usb_console_write_direct",
+          "signature": "ssize_t esp_usb_console_write_direct(const void* buf, size_t size)"
+        },
+        {
+          "name": "esp_usb_console_write_buf",
+          "signature": "ssize_t esp_usb_console_write_buf(const char* buf, size_t size)"
+        },
+        {
+          "name": "esp_usb_console_read_buf",
+          "signature": "ssize_t esp_usb_console_read_buf(char *buf, size_t buf_size)"
+        },
+        {
+          "name": "esp_usb_console_set_cb",
+          "signature": "esp_err_t esp_usb_console_set_cb(esp_usb_console_cb_t rx_cb, esp_usb_console_cb_t tx_cb, void *arg)"
+        },
+        {
+          "name": "esp_usb_console_is_installed",
+          "signature": "bool esp_usb_console_is_installed(void)"
+        },
+        {
+          "name": "esp_usb_console_available_for_read",
+          "signature": "ssize_t esp_usb_console_available_for_read(void)"
+        },
+        {
+          "name": "esp_usb_console_write_available",
+          "signature": "bool esp_usb_console_write_available(void)"
+        },
+        {
+          "name": "esp_usb_console_write_char",
+          "signature": "void esp_usb_console_write_char(char c)"
+        },
+        {
+          "name": "write_lock_acquire",
+          "signature": "static inline __attribute__((always_inline)) void write_lock_acquire(void)"
+        },
+        {
+          "name": "write_lock_release",
+          "signature": "static inline __attribute__((always_inline)) void write_lock_release(void)"
+        },
+        {
+          "name": "write_lock_acquire",
+          "signature": "static inline void write_lock_acquire(void)"
+        },
+        {
+          "name": "write_lock_release",
+          "signature": "static inline void write_lock_release(void)"
+        }
+      ],
+      "imports": [
+        "#include <stdio.h>\n",
+        "#include <string.h>\n",
+        "#include <assert.h>\n",
+        "#include <sys/param.h>\n",
+        "#include \"sdkconfig.h\"\n",
+        "#include \"freertos/FreeRTOS.h\"\n",
+        "#include \"freertos/task.h\"\n",
+        "#include \"freertos/semphr.h\"\n",
+        "#include \"esp_system.h\"\n",
+        "#include \"esp_log.h\"\n",
+        "#include \"esp_timer.h\"\n",
+        "#include \"esp_check.h\"\n",
+        "#include \"esp_intr_alloc.h\"\n",
+        "#include \"esp_private/usb_console.h\"\n",
+        "#include \"esp_private/system_internal.h\"\n",
+        "#include \"esp_private/startup_internal.h\"\n",
+        "#include \"soc/periph_defs.h\"\n",
+        "#include \"soc/rtc_cntl_reg.h\"\n",
+        "#include \"soc/usb_dwc_struct.h\"\n",
+        "#include \"hal/soc_hal.h\"\n",
+        "#include \"esp_rom_serial_output.h\"\n",
+        "#include \"esp_rom_sys.h\"\n",
+        "#include \"esp_rom_caps.h\"\n",
+        "#include \"esp32s2/rom/usb/usb_dc.h\"\n",
+        "#include \"esp32s2/rom/usb/usb_common.h\"\n",
+        "#include \"esp32s2/rom/usb/cdc_acm.h\"\n",
+        "#include \"esp32s2/rom/usb/usb_dfu.h\"\n",
+        "#include \"esp32s2/rom/usb/usb_device.h\"\n",
+        "#include \"esp32s2/rom/usb/usb_os_glue.h\"\n",
+        "#include \"esp32s2/rom/usb/usb_persist.h\"\n",
+        "#include \"esp32s2/rom/usb/chip_usb_dw_wrapper.h\"\n",
+        "#include \"esp32s3/rom/usb/usb_dc.h\"\n",
+        "#include \"esp32s3/rom/usb/cdc_acm.h\"\n",
+        "#include \"esp32s3/rom/usb/usb_dfu.h\"\n",
+        "#include \"esp32s3/rom/usb/usb_device.h\"\n",
+        "#include \"esp32s3/rom/usb/usb_os_glue.h\"\n",
+        "#include \"esp32s3/rom/usb/usb_persist.h\"\n",
+        "#include \"esp32s3/rom/usb/chip_usb_dw_wrapper.h\"\n",
+        "#include \"esp_private/esp_vfs_cdcacm_select.h\"\n"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "platform/esp32s2/esp_usb_cdc_rom_console/vfs_cdcacm.c",
+      "exports": [],
+      "functions": [
+        {
+          "name": "cdcacm_write",
+          "signature": "static ssize_t cdcacm_write(__attribute__((unused)) void *ctx, int fd, const void *data, size_t size)"
+        },
+        {
+          "name": "cdcacm_fsync",
+          "signature": "static int cdcacm_fsync(__attribute__((unused)) void *ctx, int fd)"
+        },
+        {
+          "name": "cdcacm_open",
+          "signature": "static int cdcacm_open(__attribute__((unused)) void *ctx, const char *path, int flags, int mode)"
+        },
+        {
+          "name": "cdcacm_fstat",
+          "signature": "static int cdcacm_fstat(__attribute__((unused)) void *ctx, int fd, struct stat *st)"
+        },
+        {
+          "name": "cdcacm_close",
+          "signature": "static int cdcacm_close(__attribute__((unused)) void *ctx, int fd)"
+        },
+        {
+          "name": "cdcacm_read_char",
+          "signature": "static int cdcacm_read_char(void)"
+        },
+        {
+          "name": "cdcacm_data_length_in_buffer",
+          "signature": "static ssize_t cdcacm_data_length_in_buffer(void)"
+        },
+        {
+          "name": "cdcacm_return_char",
+          "signature": "static void cdcacm_return_char(int c)"
+        },
+        {
+          "name": "cdcacm_read",
+          "signature": "static ssize_t cdcacm_read(__attribute__((unused)) void *ctx, int fd, void *data, size_t size)"
+        },
+        {
+          "name": "cdcacm_rx_cb",
+          "signature": "void cdcacm_rx_cb(void* arg)"
+        },
+        {
+          "name": "cdcacm_tx_cb",
+          "signature": "void cdcacm_tx_cb(void* arg)"
+        },
+        {
+          "name": "cdcacm_enable_blocking",
+          "signature": "static int cdcacm_enable_blocking(void)"
+        },
+        {
+          "name": "cdcacm_disable_blocking",
+          "signature": "static int cdcacm_disable_blocking(void)"
+        },
+        {
+          "name": "cdcacm_fcntl",
+          "signature": "static int cdcacm_fcntl(__attribute__((unused)) void *ctx, int fd, int cmd, int arg)"
+        },
+        {
+          "name": "select_notif_callback_isr",
+          "signature": "static void select_notif_callback_isr(cdcacm_select_notif_t cdcacm_select_notif, BaseType_t *task_woken)"
+        },
+        {
+          "name": "register_select",
+          "signature": "static esp_err_t register_select(cdcacm_select_args_t *args)"
+        },
+        {
+          "name": "unregister_select",
+          "signature": "static esp_err_t unregister_select(cdcacm_select_args_t *args)"
+        },
+        {
+          "name": "cdcacm_start_select",
+          "signature": "static esp_err_t cdcacm_start_select(int nfds, fd_set *readfds, fd_set *writefds, fd_set *exceptfds,\n                                     esp_vfs_select_sem_t select_sem, void **end_select_args)"
+        },
+        {
+          "name": "cdcacm_end_select",
+          "signature": "static esp_err_t cdcacm_end_select(void *end_select_args)"
+        },
+        {
+          "name": "esp_vfs_dev_cdcacm_set_tx_line_endings",
+          "signature": "void esp_vfs_dev_cdcacm_set_tx_line_endings(esp_line_endings_t mode)"
+        },
+        {
+          "name": "esp_vfs_dev_cdcacm_set_rx_line_endings",
+          "signature": "void esp_vfs_dev_cdcacm_set_rx_line_endings(esp_line_endings_t mode)"
+        },
+        {
+          "name": "esp_vfs_cdcacm_get_vfs(void)",
+          "signature": "const esp_vfs_fs_ops_t *esp_vfs_cdcacm_get_vfs(void)"
+        },
+        {
+          "name": "esp_vfs_dev_cdcacm_register",
+          "signature": "esp_err_t esp_vfs_dev_cdcacm_register(void)"
+        },
+        {
+          "name": "cdcacm_vfs_dev_port_init",
+          "signature": "esp_err_t cdcacm_vfs_dev_port_init(const esp_console_dev_usb_cdc_config_t *config,\n                                   esp_line_endings_t rx_mode,\n                                   esp_line_endings_t tx_mode)"
+        },
+        {
+          "name": "cdcacm_vfs_dev_port_deinit",
+          "signature": "void cdcacm_vfs_dev_port_deinit(const esp_console_dev_usb_cdc_config_t *config)"
+        },
+        {
+          "name": "esp_vfs_dev_cdcacm_include_dev_init",
+          "signature": "void esp_vfs_dev_cdcacm_include_dev_init(void)"
+        }
+      ],
+      "imports": [
+        "#include <string.h>\n",
+        "#include <stdbool.h>\n",
+        "#include <stdarg.h>\n",
+        "#include <sys/errno.h>\n",
+        "#include <sys/lock.h>\n",
+        "#include <sys/fcntl.h>\n",
+        "#include <sys/param.h>\n",
+        "#include \"esp_vfs.h\"\n",
+        "#include \"esp_vfs_cdcacm.h\"\n",
+        "#include \"esp_attr.h\"\n",
+        "#include \"sdkconfig.h\"\n",
+        "#include \"esp_heap_caps.h\"\n",
+        "#include \"esp_private/esp_vfs_cdcacm.h\"\n",
+        "#include \"esp_private/esp_vfs_cdcacm_select.h\"\n",
+        "#include \"esp_private/usb_console.h\"\n",
+        "#include \"esp_private/startup_internal.h\"\n"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "tests/burst_parse_test.c",
+      "exports": [],
+      "functions": [
+        {
+          "name": "main",
+          "signature": "int main(void)"
+        }
+      ],
+      "imports": [
+        "#include <assert.h>\n",
+        "#include <string.h>\n",
+        "#include \"burst_parse.h\"\n"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "tests/dc_calibration_test.c",
+      "exports": [],
+      "functions": [
+        {
+          "name": "__real_phy_write_gain_mem",
+          "signature": "void __real_phy_write_gain_mem(uint32_t a, uint32_t b, uint32_t c, uint32_t index)"
+        },
+        {
+          "name": "test_reg_read",
+          "signature": "unsigned test_reg_read(unsigned address)"
+        },
+        {
+          "name": "test_reg_write",
+          "signature": "void test_reg_write(unsigned address, unsigned value)"
+        },
+        {
+          "name": "phy_pbus_force_test",
+          "signature": "void phy_pbus_force_test(unsigned block, unsigned bank, unsigned value)"
+        },
+        {
+          "name": "vTaskDelay",
+          "signature": "void vTaskDelay(unsigned ticks)"
+        },
+        {
+          "name": "measure",
+          "signature": "static bool measure(float mean[2])"
+        },
+        {
+          "name": "setup",
+          "signature": "static void setup(float i, float q, const float matrix[4])"
+        },
+        {
+          "name": "main",
+          "signature": "int main(void)"
+        }
+      ],
+      "imports": [
+        "#include \"stream.h\"\n",
+        "#include \"burst_gain_table.h\"\n",
+        "#include <assert.h>\n",
+        "#include <math.h>\n",
+        "#include <stdio.h>\n",
+        "#include <string.h>\n"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "tests/pll_calibration_test.c",
+      "exports": [],
+      "functions": [
+        {
+          "name": "phy_i2c_readReg",
+          "signature": "unsigned phy_i2c_readReg(unsigned b, unsigned h, unsigned r)"
+        },
+        {
+          "name": "phy_i2c_writeReg",
+          "signature": "void phy_i2c_writeReg(unsigned b, unsigned h, unsigned r, unsigned v)"
+        },
+        {
+          "name": "esp_rom_delay_us",
+          "signature": "void esp_rom_delay_us(unsigned us)"
+        },
+        {
+          "name": "reset",
+          "signature": "static void reset(unsigned lo, unsigned hi, unsigned initial)"
+        },
+        {
+          "name": "main",
+          "signature": "int main(void)"
+        }
+      ],
+      "imports": [
+        "#include <assert.h>\n",
+        "#include <stdbool.h>\n",
+        "#include <string.h>\n",
+        "#include \"rx_pll_cal.h\"\n"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "tests/test_burst_capture.py",
+      "exports": [],
+      "functions": [
+        {
+          "name": "reference",
+          "signature": "def reference (words, fmt) :"
+        },
+        {
+          "name": "test_packing_matches_reference",
+          "signature": "def test_packing_matches_reference (self) :"
+        }
+      ],
+      "imports": [
+        "import random",
+        "import shutil",
+        "import subprocess",
+        "import tempfile",
+        "import unittest"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "tests/test_burst_commands.py",
+      "exports": [],
+      "functions": [
+        {
+          "name": "sanitizer_flags",
+          "signature": "def sanitizer_flags () :"
+        },
+        {
+          "name": "test_commands_and_random_input",
+          "signature": "def test_commands_and_random_input (self) :"
+        }
+      ],
+      "imports": [
+        "import shutil",
+        "import subprocess",
+        "import tempfile",
+        "import unittest"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "tests/test_burst_gain.py",
+      "exports": [],
+      "functions": [
+        {
+          "name": "test_hardware_default_manual_selection_and_removed_software_command",
+          "signature": "def test_hardware_default_manual_selection_and_removed_software_command (self) :"
+        }
+      ],
+      "imports": [
+        "import shutil",
+        "import subprocess",
+        "import tempfile",
+        "import unittest"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "tests/test_burst_parse.py",
+      "exports": [],
+      "functions": [
+        {
+          "name": "test_strict_fields",
+          "signature": "def test_strict_fields (self) :"
+        },
+        {
+          "name": "test_s3_commands_validate_before_receiver_changes",
+          "signature": "def test_s3_commands_validate_before_receiver_changes (self) :"
+        }
+      ],
+      "imports": [
+        "import pathlib",
+        "import subprocess",
+        "import tempfile",
+        "import unittest"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "tests/test_c2_commands.py",
+      "exports": [],
+      "functions": [
+        {
+          "name": "test_commands",
+          "signature": "def test_commands (self) :"
+        }
+      ],
+      "imports": [
+        "import shutil",
+        "import subprocess",
+        "import tempfile",
+        "import unittest"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "tests/test_c2_heap_guard.py",
+      "exports": [],
+      "functions": [
+        {
+          "name": "test_trims_regions_without_assuming_a_rom_reservation_boundary",
+          "signature": "def test_trims_regions_without_assuming_a_rom_reservation_boundary (self) :"
+        }
+      ],
+      "imports": [
+        "import shutil",
+        "import subprocess",
+        "import tempfile",
+        "import unittest"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "tests/test_c3_commands.py",
+      "exports": [],
+      "functions": [
+        {
+          "name": "test_commands",
+          "signature": "def test_commands (self) :"
+        }
+      ],
+      "imports": [
+        "import shutil",
+        "import subprocess",
+        "import tempfile",
+        "import unittest"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "tests/test_c5_c61_commands.py",
+      "exports": [],
+      "functions": [
+        {
+          "name": "test_both_chips",
+          "signature": "def test_both_chips (self) :"
+        }
+      ],
+      "imports": [
+        "import shutil",
+        "import subprocess",
+        "import tempfile",
+        "import unittest"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "tests/test_c6_commands.py",
+      "exports": [],
+      "functions": [
+        {
+          "name": "test_c6",
+          "signature": "def test_c6 (self) :"
+        }
+      ],
+      "imports": [
+        "import shutil",
+        "import subprocess",
+        "import tempfile",
+        "import unittest"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "tests/test_dc_calibration.py",
+      "exports": [],
+      "functions": [
+        {
+          "name": "test_response_matrix_and_failure_rollback",
+          "signature": "def test_response_matrix_and_failure_rollback (self) :"
+        }
+      ],
+      "imports": [
+        "import pathlib",
+        "import subprocess",
+        "import tempfile",
+        "import unittest"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "tests/test_esp32_capture_recovery.py",
+      "exports": [],
+      "functions": [
+        {
+          "name": "test_capture_and_spectrum_recover_before_start",
+          "signature": "def test_capture_and_spectrum_recover_before_start (self) :"
+        }
+      ],
+      "imports": [
+        "import shutil",
+        "import subprocess",
+        "import tempfile",
+        "import unittest"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "tests/test_esp32_commands.py",
+      "exports": [],
+      "functions": [
+        {
+          "name": "test_protocol",
+          "signature": "def test_protocol (self) :"
+        }
+      ],
+      "imports": [
+        "import shutil",
+        "import subprocess",
+        "import tempfile",
+        "import unittest"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "tests/test_firmware_collect.py",
+      "exports": [],
+      "functions": [
+        {
+          "name": "setUp",
+          "signature": "def setUp (self) :"
+        },
+        {
+          "name": "test_ready_to_serve_layout",
+          "signature": "def test_ready_to_serve_layout (self) :"
+        },
+        {
+          "name": "test_corrupt_input_never_produces_catalog",
+          "signature": "def test_corrupt_input_never_produces_catalog (self) :"
+        },
+        {
+          "name": "test_missing_profile_fails_complete_release",
+          "signature": "def test_missing_profile_fails_complete_release (self) :"
+        },
+        {
+          "name": "test_duplicate_and_empty_inputs_rejected",
+          "signature": "def test_duplicate_and_empty_inputs_rejected (self) :"
+        }
+      ],
+      "imports": [
+        "import importlib.util",
+        "import json",
+        "import tempfile",
+        "import unittest",
+        "import test_firmware_export as exporter_tests",
+        "import shutil"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "tests/test_firmware_export.py",
+      "exports": [],
+      "functions": [
+        {
+          "name": "setUp",
+          "signature": "def setUp (self) :"
+        },
+        {
+          "name": "save_args",
+          "signature": "def save_args (self) :"
+        },
+        {
+          "name": "export",
+          "signature": "def export (self) :"
+        },
+        {
+          "name": "test_manifest_and_cli_offsets",
+          "signature": "def test_manifest_and_cli_offsets (self) :"
+        },
+        {
+          "name": "test_streaming_profile_identifies_its_application",
+          "signature": "def test_streaming_profile_identifies_its_application (self) :"
+        },
+        {
+          "name": "test_build_date_from_image_descriptor",
+          "signature": "def test_build_date_from_image_descriptor (self) :"
+        },
+        {
+          "name": "test_embedded_version_overrides_descriptor_date",
+          "signature": "def test_embedded_version_overrides_descriptor_date (self) :"
+        },
+        {
+          "name": "test_embedded_profile_mismatch_rejected",
+          "signature": "def test_embedded_profile_mismatch_rejected (self) :"
+        },
+        {
+          "name": "test_probe_firmware_rejected",
+          "signature": "def test_probe_firmware_rejected (self) :"
+        },
+        {
+          "name": "test_target_mismatch_rejected",
+          "signature": "def test_target_mismatch_rejected (self) :"
+        },
+        {
+          "name": "test_existing_release_not_overwritten",
+          "signature": "def test_existing_release_not_overwritten (self) :"
+        },
+        {
+          "name": "test_out_of_flash_rejected",
+          "signature": "def test_out_of_flash_rejected (self) :"
+        },
+        {
+          "name": "test_detect_resolves_configured_size_and_preserves_no_stub",
+          "signature": "def test_detect_resolves_configured_size_and_preserves_no_stub (self) :"
+        },
+        {
+          "name": "test_c2_records_required_crystal",
+          "signature": "def test_c2_records_required_crystal (self) :"
+        }
+      ],
+      "imports": [
+        "import importlib.util",
+        "import json",
+        "import tempfile",
+        "import unittest"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "tests/test_gpio.py",
+      "exports": [],
+      "functions": [
+        {
+          "name": "test_gpio_service_on_all_targets",
+          "signature": "def test_gpio_service_on_all_targets (self) :"
+        }
+      ],
+      "imports": [
+        "import shutil",
+        "import subprocess",
+        "import tempfile",
+        "import unittest"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "tests/test_h2_agc.py",
+      "exports": [],
+      "functions": [
+        {
+          "name": "test_converges_and_stays_in_range",
+          "signature": "def test_converges_and_stays_in_range (self) :"
+        }
+      ],
+      "imports": [
+        "import shutil",
+        "import subprocess",
+        "import tempfile",
+        "import unittest"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "tests/test_h2_commands.py",
+      "exports": [],
+      "functions": [
+        {
+          "name": "test_commands",
+          "signature": "def test_commands (self) :"
+        }
+      ],
+      "imports": [
+        "import shutil",
+        "import subprocess",
+        "import tempfile",
+        "import unittest"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "tests/test_pll_calibration.py",
+      "exports": [],
+      "functions": [
+        {
+          "name": "test_capacitor_search",
+          "signature": "def test_capacitor_search (self) :"
+        }
+      ],
+      "imports": [
+        "import shutil",
+        "import subprocess",
+        "import tempfile",
+        "import unittest"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "tests/test_receive_commands.py",
+      "exports": [],
+      "functions": [
+        {
+          "name": "test_rx_commands_and_removed_transmit_commands",
+          "signature": "def test_rx_commands_and_removed_transmit_commands (self) :"
+        }
+      ],
+      "imports": [
+        "import shutil",
+        "import subprocess",
+        "import tempfile",
+        "import unittest"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "tests/test_ring_retirement.py",
+      "exports": [],
+      "functions": [
+        {
+          "name": "test_retirement_at_each_processing_phase",
+          "signature": "def test_retirement_at_each_processing_phase (self) :"
+        }
+      ],
+      "imports": [
+        "import shutil",
+        "import subprocess",
+        "import tempfile",
+        "import unittest"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "tests/test_ring_sentinels.py",
+      "exports": [],
+      "functions": [
+        {
+          "name": "test_wrapped_regions_and_untouched_neighbors",
+          "signature": "def test_wrapped_regions_and_untouched_neighbors (self) :"
+        }
+      ],
+      "imports": [
+        "import shutil",
+        "import subprocess",
+        "import tempfile",
+        "import unittest"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "tests/test_rx_calibration_state.py",
+      "exports": [],
+      "functions": [
+        {
+          "name": "test_measurement_generation_and_argument_forwarding",
+          "signature": "def test_measurement_generation_and_argument_forwarding (self) :"
+        },
+        {
+          "name": "test_legacy_dc_table_changes_under_phy_lock",
+          "signature": "def test_legacy_dc_table_changes_under_phy_lock (self) :"
+        }
+      ],
+      "imports": [
+        "import shutil",
+        "import subprocess",
+        "import tempfile",
+        "import unittest"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "tests/test_rx_controls.py",
+      "exports": [],
+      "functions": [
+        {
+          "name": "compile_run",
+          "signature": "def compile_run (self, source, flags=()) :"
+        },
+        {
+          "name": "test_bandwidth_curves_and_interpolation",
+          "signature": "def test_bandwidth_curves_and_interpolation (self) :"
+        },
+        {
+          "name": "test_c61_mirror_and_agc_restore",
+          "signature": "def test_c61_mirror_and_agc_restore (self) :"
+        },
+        {
+          "name": "test_original_esp32_filter_restores_calibration",
+          "signature": "def test_original_esp32_filter_restores_calibration (self) :"
+        },
+        {
+          "name": "test_c3_filter_restores_calibration",
+          "signature": "def test_c3_filter_restores_calibration (self) :"
+        },
+        {
+          "name": "test_c2_filter_restores_calibration",
+          "signature": "def test_c2_filter_restores_calibration (self) :"
+        },
+        {
+          "name": "test_h2_filter_preserves_high_bit_and_restores_calibration",
+          "signature": "def test_h2_filter_preserves_high_bit_and_restores_calibration (self) :"
+        }
+      ],
+      "imports": [
+        "import shutil",
+        "import subprocess",
+        "import tempfile",
+        "import unittest"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "tests/test_rx_recalibration.py",
+      "exports": [],
+      "functions": [
+        {
+          "name": "test_h2_packs_each_rf_gain_without_overwriting_phy_parameters",
+          "signature": "def test_h2_packs_each_rf_gain_without_overwriting_phy_parameters (self) :"
+        },
+        {
+          "name": "test_legacy_preserve_iq_while_refreshing_dc",
+          "signature": "def test_legacy_preserve_iq_while_refreshing_dc (self) :"
+        },
+        {
+          "name": "test_measurement_frequency_and_cache_invalidation",
+          "signature": "def test_measurement_frequency_and_cache_invalidation (self) :"
+        }
+      ],
+      "imports": [
+        "import shutil",
+        "import subprocess",
+        "import tempfile",
+        "import unittest"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "tests/test_s31_gain.py",
+      "exports": [],
+      "functions": [
+        {
+          "name": "test_gain_survives_receiver_preparation",
+          "signature": "def test_gain_survives_receiver_preparation (self) :"
+        }
+      ],
+      "imports": [
+        "import shutil",
+        "import subprocess",
+        "import tempfile",
+        "import unittest"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "tests/test_snapshot_spectrum.py",
+      "exports": [],
+      "functions": [
+        {
+          "name": "test_mean_max_bin_order_and_frame_counts",
+          "signature": "def test_mean_max_bin_order_and_frame_counts (self) :"
+        }
+      ],
+      "imports": [
+        "import shutil",
+        "import subprocess",
+        "import tempfile",
+        "import unittest"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "tests/test_spectrum_math.py",
+      "exports": [],
+      "functions": [
+        {
+          "name": "test_sliced_fft_complex_tones_and_power_quantization",
+          "signature": "def test_sliced_fft_complex_tones_and_power_quantization (self) :"
+        },
+        {
+          "name": "test_dc_tracker_preserves_changes_and_bounds_hann_correction",
+          "signature": "def test_dc_tracker_preserves_changes_and_bounds_hann_correction (self) :"
+        }
+      ],
+      "imports": [
+        "import shutil",
+        "import subprocess",
+        "import tempfile",
+        "import unittest"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "tests/test_streaming_gain.py",
+      "exports": [],
+      "functions": [
+        {
+          "name": "test_restore_agc_defaults_after_manual_gain",
+          "signature": "def test_restore_agc_defaults_after_manual_gain (self) :"
+        }
+      ],
+      "imports": [
+        "import shutil",
+        "import subprocess",
+        "import tempfile",
+        "import unittest"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "tests/test_tuning.py",
+      "exports": [],
+      "functions": [
+        {
+          "name": "compile_run",
+          "signature": "def compile_run (self, source) :"
+        },
+        {
+          "name": "test_c5_exact_frequency_and_bandwidth_mode",
+          "signature": "def test_c5_exact_frequency_and_bandwidth_mode (self) :"
+        },
+        {
+          "name": "test_receive_frequency_maps_to_each_chip_pll",
+          "signature": "def test_receive_frequency_maps_to_each_chip_pll (self) :"
+        },
+        {
+          "name": "test_alternate_lo_setup_and_return_to_normal",
+          "signature": "def test_alternate_lo_setup_and_return_to_normal (self) :"
+        },
+        {
+          "name": "test_s2_capacitor_search_and_failure_restore",
+          "signature": "def test_s2_capacitor_search_and_failure_restore (self) :"
+        },
+        {
+          "name": "test_c5_bandwidth_mode_survives_prepare_and_retuning",
+          "signature": "def test_c5_bandwidth_mode_survives_prepare_and_retuning (self) :"
+        },
+        {
+          "name": "test_s2_s3_s31_production_parsers",
+          "signature": "def test_s2_s3_s31_production_parsers (self) :"
+        }
+      ],
+      "imports": [
+        "import shutil",
+        "import subprocess",
+        "import tempfile",
+        "import unittest"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "tests/test_version.py",
+      "exports": [],
+      "functions": [
+        {
+          "name": "test_embedded_metadata_validation",
+          "signature": "def test_embedded_metadata_validation (self) :"
+        },
+        {
+          "name": "image",
+          "signature": "def image (value) :"
+        },
+        {
+          "name": "test_production_version_command",
+          "signature": "def test_production_version_command (self) :"
+        }
+      ],
+      "imports": [
+        "import importlib.util",
+        "import json",
+        "import shutil",
+        "import subprocess",
+        "import tempfile",
+        "import unittest"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "tools/build_firmware.py",
+      "exports": [],
+      "functions": [
+        {
+          "name": "main",
+          "signature": "def main () :"
+        }
+      ],
+      "imports": [
+        "import argparse",
+        "import json",
+        "import os",
+        "import subprocess",
+        "import sys"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "tools/check_spectrum.py",
+      "exports": [],
+      "functions": [
+        {
+          "name": "exact",
+          "signature": "def exact (port, count) :"
+        },
+        {
+          "name": "command",
+          "signature": "def command (port, text) :"
+        },
+        {
+          "name": "synchronize",
+          "signature": "def synchronize (port) :"
+        },
+        {
+          "name": "check",
+          "signature": "def check (port, milliseconds, stats=False) :"
+        },
+        {
+          "name": "u16",
+          "signature": "def u16 (at) :"
+        },
+        {
+          "name": "u32",
+          "signature": "def u32 (at) :"
+        },
+        {
+          "name": "main",
+          "signature": "def main () :"
+        }
+      ],
+      "imports": [
+        "import argparse",
+        "import json",
+        "import time",
+        "import zlib",
+        "import serial"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "tools/collect_firmware.py",
+      "exports": [],
+      "functions": [
+        {
+          "name": "collect",
+          "signature": "def collect (source, output, catalog=None) :"
+        }
+      ],
+      "imports": [
+        "import argparse",
+        "import hashlib",
+        "import json",
+        "import re",
+        "import shutil"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "tools/export_web_firmware.py",
+      "exports": [],
+      "functions": [
+        {
+          "name": "firmware_build_date",
+          "signature": "def firmware_build_date (data) : # ESP-IDF esp_app_desc_t starts after the 24-byte image and 8-byte segment # headers. Its date field follows magic/security/reserved/version/name/time."
+        },
+        {
+          "name": "firmware_version",
+          "signature": "def firmware_version (data) :"
+        },
+        {
+          "name": "export",
+          "signature": "def export (build, output, board, label, version, allow_larger_flash=False) :"
+        }
+      ],
+      "imports": [
+        "import argparse",
+        "import hashlib",
+        "import json",
+        "import re"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "tools/generate_version.py",
+      "exports": [],
+      "functions": [
+        {
+          "name": "metadata",
+          "signature": "def metadata (root, profile) :"
+        }
+      ],
+      "imports": [
+        "import argparse",
+        "import json",
+        "import subprocess"
+      ],
+      "docstrings": []
+    },
+    {
+      "file": "tools/s3_ring.py",
+      "exports": [],
+      "functions": [
+        {
+          "name": "__init__",
+          "signature": "def __init__ (self, port) : # DTR/RTS released before opening: USB-UART bridges with the usual # auto-reset circuit would otherwise reset the board on open."
+        },
+        {
+          "name": "line",
+          "signature": "def line (self) :"
+        },
+        {
+          "name": "cmd",
+          "signature": "def cmd (self, text, expect_ok=True) :"
+        },
+        {
+          "name": "read_exact",
+          "signature": "def read_exact (self, n) :"
+        },
+        {
+          "name": "parse_report",
+          "signature": "def parse_report (text, tag) :"
+        },
+        {
+          "name": "print_report",
+          "signature": "def print_report (r, rate_hz=None) :"
+        },
+        {
+          "name": "iq_from_words",
+          "signature": "def iq_from_words (words) :"
+        },
+        {
+          "name": "do_ring",
+          "signature": "def do_ring (esp, a) :"
+        },
+        {
+          "name": "do_ringcap",
+          "signature": "def do_ringcap (esp, a) :"
+        },
+        {
+          "name": "check_gapless",
+          "signature": "def check_gapless (words, counts, fs) :"
+        },
+        {
+          "name": "read_frame",
+          "signature": "def read_frame (esp, first4) :"
+        },
+        {
+          "name": "do_spec",
+          "signature": "def do_spec (esp, a) :"
+        },
+        {
+          "name": "write_summary",
+          "signature": "def write_summary (path, t, f, s, hdr, edge_db) :"
+        },
+        {
+          "name": "main",
+          "signature": "def main () :"
+        }
+      ],
+      "imports": [
+        "import argparse, struct, sys, time, zlib",
+        "import numpy as np",
+        "import serial"
+      ],
+      "docstrings": []
+    }
+  ],
+  "loadedParsers": [
+    "c",
+    "python"
+  ]
+}

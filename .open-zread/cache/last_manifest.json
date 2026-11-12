@@ -1,0 +1,531 @@
+{
+  "version": "1.0",
+  "generated_at": "2026-11-11T08:56:12.201Z",
+  "files": [
+    {
+      "path": "main/common/burst_capture.h",
+      "hash": "5410cc0ccac1",
+      "size": 1953
+    },
+    {
+      "path": "main/common/burst_commands.h",
+      "hash": "56ace6857e33",
+      "size": 2738
+    },
+    {
+      "path": "main/common/burst_gain.h",
+      "hash": "bc39ad2c5d11",
+      "size": 4765
+    },
+    {
+      "path": "main/common/burst_gain_min.h",
+      "hash": "c91359cfbd4f",
+      "size": 222
+    },
+    {
+      "path": "main/common/burst_gain_table.c",
+      "hash": "1692ea05737b",
+      "size": 2315
+    },
+    {
+      "path": "main/common/burst_gain_table.h",
+      "hash": "140e335928fe",
+      "size": 498
+    },
+    {
+      "path": "main/common/burst_gpio.c",
+      "hash": "71729608da6a",
+      "size": 4526
+    },
+    {
+      "path": "main/common/burst_gpio.h",
+      "hash": "55fa2082c294",
+      "size": 262
+    },
+    {
+      "path": "main/common/burst_limits.h",
+      "hash": "65e2a04fdca1",
+      "size": 1409
+    },
+    {
+      "path": "main/common/burst_parse.h",
+      "hash": "a9a438877e50",
+      "size": 1409
+    },
+    {
+      "path": "main/common/burst_serial.c",
+      "hash": "1481f121c855",
+      "size": 9627
+    },
+    {
+      "path": "main/common/burst_serial.h",
+      "hash": "558ce16d2f59",
+      "size": 1177
+    },
+    {
+      "path": "main/common/burst_version.c",
+      "hash": "128901e7c3bf",
+      "size": 617
+    },
+    {
+      "path": "main/common/burst_version.h",
+      "hash": "77cdacc5dfa8",
+      "size": 81
+    },
+    {
+      "path": "main/common/ring_capture.c",
+      "hash": "768b180accf6",
+      "size": 78398
+    },
+    {
+      "path": "main/common/ring_capture.h",
+      "hash": "5e8f2d650946",
+      "size": 4055
+    },
+    {
+      "path": "main/common/ring_io.h",
+      "hash": "529c368c44b5",
+      "size": 1777
+    },
+    {
+      "path": "main/common/ring_scalar.h",
+      "hash": "23a0a2e43fec",
+      "size": 6452
+    },
+    {
+      "path": "main/common/rx_bandwidth.h",
+      "hash": "102fd4874294",
+      "size": 5120
+    },
+    {
+      "path": "main/common/rx_calibration_state.c",
+      "hash": "8db70fdefee1",
+      "size": 4837
+    },
+    {
+      "path": "main/common/rx_gain_force.h",
+      "hash": "93cbfe16417a",
+      "size": 664
+    },
+    {
+      "path": "main/common/rx_gain_verify.c",
+      "hash": "d8978af73ede",
+      "size": 3263
+    },
+    {
+      "path": "main/common/rx_lo.h",
+      "hash": "598cb4cca8e4",
+      "size": 2420
+    },
+    {
+      "path": "main/common/rx_pll_cal.h",
+      "hash": "9b99187f3016",
+      "size": 2475
+    },
+    {
+      "path": "main/common/rx_recalibration.c",
+      "hash": "80f111c5856d",
+      "size": 8003
+    },
+    {
+      "path": "main/common/rx_recalibration.h",
+      "hash": "c3a2501a4357",
+      "size": 924
+    },
+    {
+      "path": "main/common/rx_tuning.h",
+      "hash": "bc26a1a54028",
+      "size": 342
+    },
+    {
+      "path": "main/common/spectrum.c",
+      "hash": "6d1694734545",
+      "size": 10024
+    },
+    {
+      "path": "main/common/spectrum.h",
+      "hash": "eead31949c44",
+      "size": 819
+    },
+    {
+      "path": "main/common/spectrum_dc.h",
+      "hash": "5857769fc8a4",
+      "size": 1178
+    },
+    {
+      "path": "main/common/spectrum_fft.h",
+      "hash": "6b5ec8c91b8e",
+      "size": 1327
+    },
+    {
+      "path": "main/common/spectrum_math.h",
+      "hash": "0503c865e3ac",
+      "size": 2012
+    },
+    {
+      "path": "main/common/spectrum_stats.c",
+      "hash": "269eab1cfe4c",
+      "size": 1944
+    },
+    {
+      "path": "main/common/spectrum_stats.h",
+      "hash": "2034118f92ec",
+      "size": 857
+    },
+    {
+      "path": "main/diagnostics/dump_probe.h",
+      "hash": "a9ed2b4da9ae",
+      "size": 3038
+    },
+    {
+      "path": "main/diagnostics/filter_probe.h",
+      "hash": "bfc8b2863a62",
+      "size": 4460
+    },
+    {
+      "path": "main/diagnostics/ring_probe.h",
+      "hash": "ceaf563ee500",
+      "size": 3868
+    },
+    {
+      "path": "main/families/c5_c6_c61/receiver.c",
+      "hash": "323dbf9b0018",
+      "size": 14631
+    },
+    {
+      "path": "main/targets/esp32/receiver.c",
+      "hash": "0e13b5d4c279",
+      "size": 10948
+    },
+    {
+      "path": "main/targets/esp32c2/heap_guard.c",
+      "hash": "cc01ba9393c8",
+      "size": 838
+    },
+    {
+      "path": "main/targets/esp32c2/receiver.c",
+      "hash": "97cd8750a53f",
+      "size": 8932
+    },
+    {
+      "path": "main/targets/esp32c3/receiver.c",
+      "hash": "7887072ab9b3",
+      "size": 8451
+    },
+    {
+      "path": "main/targets/esp32c5/chip.h",
+      "hash": "abc30251ab28",
+      "size": 707
+    },
+    {
+      "path": "main/targets/esp32c5/tuning.h",
+      "hash": "e64a61ac537d",
+      "size": 354
+    },
+    {
+      "path": "main/targets/esp32c6/chip.h",
+      "hash": "b67635cbdb77",
+      "size": 2908
+    },
+    {
+      "path": "main/targets/esp32c61/chip.h",
+      "hash": "a86faeb2e2f3",
+      "size": 2159
+    },
+    {
+      "path": "main/targets/esp32c61/tuning.h",
+      "hash": "f8d45aa19df6",
+      "size": 666
+    },
+    {
+      "path": "main/targets/esp32h2/receiver.c",
+      "hash": "5b0daa514242",
+      "size": 9902
+    },
+    {
+      "path": "main/targets/esp32s2/pll.h",
+      "hash": "8eb0627581f0",
+      "size": 1673
+    },
+    {
+      "path": "main/targets/esp32s2/receiver.c",
+      "hash": "bb44977d3779",
+      "size": 9607
+    },
+    {
+      "path": "main/targets/esp32s3/receiver.c",
+      "hash": "a448a5f03b3e",
+      "size": 20400
+    },
+    {
+      "path": "main/targets/esp32s31/burst/receiver.c",
+      "hash": "f90fb2813d00",
+      "size": 18470
+    },
+    {
+      "path": "main/targets/esp32s31/burst/s31_spectrum.h",
+      "hash": "7bfda59d5f30",
+      "size": 24199
+    },
+    {
+      "path": "main/targets/esp32s31/streaming/control.c",
+      "hash": "37d326d1dd56",
+      "size": 8230
+    },
+    {
+      "path": "main/targets/esp32s31/streaming/dc.c",
+      "hash": "75602619d5c5",
+      "size": 4643
+    },
+    {
+      "path": "main/targets/esp32s31/streaming/network.c",
+      "hash": "d4c4d4cd3374",
+      "size": 9376
+    },
+    {
+      "path": "main/targets/esp32s31/streaming/receiver.c",
+      "hash": "18fc35fe75b9",
+      "size": 25635
+    },
+    {
+      "path": "main/targets/esp32s31/streaming/stream.h",
+      "hash": "5bbbea5adb4d",
+      "size": 2836
+    },
+    {
+      "path": "main/targets/esp32s31/streaming/usb.c",
+      "hash": "b379e91b9218",
+      "size": 10310
+    },
+    {
+      "path": "main/targets/esp32s31/tuning.h",
+      "hash": "8b0146a5506c",
+      "size": 540
+    },
+    {
+      "path": "platform/esp32s2/esp_usb_cdc_rom_console/include/esp_private/esp_vfs_cdcacm.h",
+      "hash": "bed9ee5a060f",
+      "size": 1837
+    },
+    {
+      "path": "platform/esp32s2/esp_usb_cdc_rom_console/include/esp_private/esp_vfs_cdcacm_select.h",
+      "hash": "de2b3752a8b6",
+      "size": 712
+    },
+    {
+      "path": "platform/esp32s2/esp_usb_cdc_rom_console/include/esp_private/usb_console.h",
+      "hash": "d42eb1003426",
+      "size": 3252
+    },
+    {
+      "path": "platform/esp32s2/esp_usb_cdc_rom_console/include/esp_vfs_cdcacm.h",
+      "hash": "bc1915580c91",
+      "size": 1652
+    },
+    {
+      "path": "platform/esp32s2/esp_usb_cdc_rom_console/usb_console.c",
+      "hash": "9fb745086c83",
+      "size": 17374
+    },
+    {
+      "path": "platform/esp32s2/esp_usb_cdc_rom_console/vfs_cdcacm.c",
+      "hash": "6044d16d3527",
+      "size": 16481
+    },
+    {
+      "path": "tests/burst_parse_test.c",
+      "hash": "a10ab3d6d245",
+      "size": 1310
+    },
+    {
+      "path": "tests/dc_calibration_test.c",
+      "hash": "fe44e2895b26",
+      "size": 4851
+    },
+    {
+      "path": "tests/pll_calibration_test.c",
+      "hash": "385169f0e9d2",
+      "size": 2615
+    },
+    {
+      "path": "tests/test_burst_capture.py",
+      "hash": "ce630a9a67f7",
+      "size": 2445
+    },
+    {
+      "path": "tests/test_burst_commands.py",
+      "hash": "d40faf9d657f",
+      "size": 4781
+    },
+    {
+      "path": "tests/test_burst_gain.py",
+      "hash": "cf59842c0699",
+      "size": 4004
+    },
+    {
+      "path": "tests/test_burst_parse.py",
+      "hash": "a21663d1296b",
+      "size": 1267
+    },
+    {
+      "path": "tests/test_c2_commands.py",
+      "hash": "c29e0b1c6850",
+      "size": 5563
+    },
+    {
+      "path": "tests/test_c2_heap_guard.py",
+      "hash": "48226aa01d95",
+      "size": 2003
+    },
+    {
+      "path": "tests/test_c3_commands.py",
+      "hash": "08d393020c9a",
+      "size": 5258
+    },
+    {
+      "path": "tests/test_c5_c61_commands.py",
+      "hash": "c5d9955d932f",
+      "size": 7779
+    },
+    {
+      "path": "tests/test_c6_commands.py",
+      "hash": "91fdbe0129d5",
+      "size": 5204
+    },
+    {
+      "path": "tests/test_dc_calibration.py",
+      "hash": "cfec9dd49e87",
+      "size": 1634
+    },
+    {
+      "path": "tests/test_esp32_capture_recovery.py",
+      "hash": "829dec5c56e6",
+      "size": 3240
+    },
+    {
+      "path": "tests/test_esp32_commands.py",
+      "hash": "bf24c2694a22",
+      "size": 6217
+    },
+    {
+      "path": "tests/test_firmware_collect.py",
+      "hash": "49ee9b2bb504",
+      "size": 2137
+    },
+    {
+      "path": "tests/test_firmware_export.py",
+      "hash": "cd8ffbe28de3",
+      "size": 6038
+    },
+    {
+      "path": "tests/test_gpio.py",
+      "hash": "65b37a192681",
+      "size": 7249
+    },
+    {
+      "path": "tests/test_h2_agc.py",
+      "hash": "2c31d95ae1e6",
+      "size": 2556
+    },
+    {
+      "path": "tests/test_h2_commands.py",
+      "hash": "1c291285c80d",
+      "size": 5287
+    },
+    {
+      "path": "tests/test_pll_calibration.py",
+      "hash": "1af5682d402a",
+      "size": 833
+    },
+    {
+      "path": "tests/test_receive_commands.py",
+      "hash": "4a962d9e3257",
+      "size": 3590
+    },
+    {
+      "path": "tests/test_ring_retirement.py",
+      "hash": "f8b3891a7ffa",
+      "size": 3507
+    },
+    {
+      "path": "tests/test_ring_sentinels.py",
+      "hash": "d9ef622d9c49",
+      "size": 2220
+    },
+    {
+      "path": "tests/test_rx_calibration_state.py",
+      "hash": "5ea49b6ef1fe",
+      "size": 5808
+    },
+    {
+      "path": "tests/test_rx_controls.py",
+      "hash": "9443d60eea32",
+      "size": 10040
+    },
+    {
+      "path": "tests/test_rx_recalibration.py",
+      "hash": "e36f3dace3a7",
+      "size": 11817
+    },
+    {
+      "path": "tests/test_s31_gain.py",
+      "hash": "fc99f09d0983",
+      "size": 2343
+    },
+    {
+      "path": "tests/test_snapshot_spectrum.py",
+      "hash": "941853d88517",
+      "size": 5269
+    },
+    {
+      "path": "tests/test_spectrum_math.py",
+      "hash": "6e1dfcace855",
+      "size": 9089
+    },
+    {
+      "path": "tests/test_streaming_gain.py",
+      "hash": "a0187e923303",
+      "size": 3482
+    },
+    {
+      "path": "tests/test_tuning.py",
+      "hash": "fc792b0558b8",
+      "size": 16197
+    },
+    {
+      "path": "tests/test_version.py",
+      "hash": "d0c96700e6bc",
+      "size": 2708
+    },
+    {
+      "path": "tools/build_firmware.py",
+      "hash": "a80f5ad80f3e",
+      "size": 3184
+    },
+    {
+      "path": "tools/check_spectrum.py",
+      "hash": "f8ee4a37248b",
+      "size": 6140
+    },
+    {
+      "path": "tools/collect_firmware.py",
+      "hash": "2c1585fcbf63",
+      "size": 5294
+    },
+    {
+      "path": "tools/export_web_firmware.py",
+      "hash": "51b60d26e27d",
+      "size": 7005
+    },
+    {
+      "path": "tools/generate_version.py",
+      "hash": "230ab405be28",
+      "size": 1360
+    },
+    {
+      "path": "tools/s3_ring.py",
+      "hash": "44e55f560e96",
+      "size": 14222
+    }
+  ]
+}

@@ -1,0 +1,360 @@
+{
+  "id": "20261111-085732",
+  "generated_at": "2026-11-11T08:57:32.308Z",
+  "language": "zh",
+  "pages": [
+    {
+      "slug": "1-project-overview",
+      "title": "项目概览",
+      "file": "1-project-overview.md",
+      "section": "入门指南",
+      "level": "Beginner",
+      "associatedFiles": [
+        "README.md",
+        "docs/how-it-works.md"
+      ]
+    },
+    {
+      "slug": "2-quick-start",
+      "title": "快速开始",
+      "file": "2-quick-start.md",
+      "section": "入门指南",
+      "level": "Beginner",
+      "associatedFiles": [
+        "firmware-targets.json",
+        "CMakeLists.txt",
+        "main/Kconfig.projbuild"
+      ]
+    },
+    {
+      "slug": "3-core-architecture",
+      "title": "核心架构设计",
+      "file": "3-core-architecture.md",
+      "section": "入门指南",
+      "level": "Intermediate",
+      "associatedFiles": [
+        "main/CMakeLists.txt",
+        "main/common/",
+        "main/targets/",
+        "main/families/c5_c6_c61/receiver.c"
+      ]
+    },
+    {
+      "slug": "4-snapshot-dump-engine",
+      "title": "射频采集：未公开 dump 引擎驱动",
+      "file": "4-snapshot-dump-engine.md",
+      "section": "射频采集引擎",
+      "group": "快照采集",
+      "level": "Advanced",
+      "associatedFiles": [
+        "main/targets/esp32c3/receiver.c",
+        "main/targets/esp32/receiver.c",
+        "main/targets/esp32s2/receiver.c",
+        "main/common/burst_capture.h"
+      ]
+    },
+    {
+      "slug": "5-capture-memory-guard",
+      "title": "捕获内存守卫：SRAM 所有权与隔离",
+      "file": "5-capture-memory-guard.md",
+      "section": "射频采集引擎",
+      "group": "快照采集",
+      "level": "Advanced",
+      "associatedFiles": [
+        "main/targets/esp32c3/sram_guard.ld",
+        "main/targets/esp32c2/heap_guard.c",
+        "main/targets/esp32s3/linker.lf"
+      ]
+    },
+    {
+      "slug": "6-ring-capture-scheduler",
+      "title": "环形捕获：多银行轮转与哨兵校验",
+      "file": "6-ring-capture-scheduler.md",
+      "section": "射频采集引擎",
+      "group": "连续采集",
+      "level": "Advanced",
+      "associatedFiles": [
+        "main/common/ring_capture.c",
+        "main/common/ring_capture.h",
+        "main/common/ring_scalar.h",
+        "main/common/ring_io.h"
+      ]
+    },
+    {
+      "slug": "7-tuning-lo-pll",
+      "title": "频率调谐：PLL 与 5/6 分频 LO",
+      "file": "7-tuning-lo-pll.md",
+      "section": "接收链路控制",
+      "level": "Advanced",
+      "associatedFiles": [
+        "main/common/rx_tuning.h",
+        "main/common/rx_lo.h",
+        "main/common/rx_pll_cal.h",
+        "main/targets/esp32s2/pll.h"
+      ]
+    },
+    {
+      "slug": "8-gain-control",
+      "title": "增益控制：AGC 与手动索引映射",
+      "file": "8-gain-control.md",
+      "section": "接收链路控制",
+      "level": "Intermediate",
+      "associatedFiles": [
+        "main/common/burst_gain.h",
+        "main/common/burst_gain_table.c",
+        "main/common/rx_gain_verify.c",
+        "main/common/rx_gain_force.h"
+      ]
+    },
+    {
+      "slug": "9-analog-bandwidth-filter",
+      "title": "模拟带宽：电容码插值滤波",
+      "file": "9-analog-bandwidth-filter.md",
+      "section": "接收链路控制",
+      "level": "Intermediate",
+      "associatedFiles": [
+        "main/common/rx_bandwidth.h",
+        "docs/rx-controls.md"
+      ]
+    },
+    {
+      "slug": "10-rx-calibration",
+      "title": "接收校准：IQ 失配与 DC 漂移",
+      "file": "10-rx-calibration.md",
+      "section": "接收链路控制",
+      "level": "Advanced",
+      "associatedFiles": [
+        "main/common/rx_calibration_state.c",
+        "main/common/rx_recalibration.c",
+        "main/common/rx_recalibration.h"
+      ]
+    },
+    {
+      "slug": "11-spectrum-pipeline",
+      "title": "频谱流水线：FFT 归约与 SPC1 帧",
+      "file": "11-spectrum-pipeline.md",
+      "section": "片上频谱引擎",
+      "level": "Advanced",
+      "associatedFiles": [
+        "main/common/spectrum.c",
+        "main/common/spectrum.h",
+        "docs/spectrum.md"
+      ]
+    },
+    {
+      "slug": "12-spectrum-math-kernels",
+      "title": "频谱内核：功率编码与 DC 抑制",
+      "file": "12-spectrum-math-kernels.md",
+      "section": "片上频谱引擎",
+      "level": "Intermediate",
+      "associatedFiles": [
+        "main/common/spectrum_math.h",
+        "main/common/spectrum_dc.h",
+        "main/common/spectrum_fft.h"
+      ]
+    },
+    {
+      "slug": "13-s3-dual-core-spectrum",
+      "title": "S3 双核 SIMD 频谱工作器",
+      "file": "13-s3-dual-core-spectrum.md",
+      "section": "片上频谱引擎",
+      "level": "Advanced",
+      "associatedFiles": [
+        "main/targets/esp32s3/receiver.c",
+        "main/targets/esp32s3/s3_core1.S",
+        "main/targets/esp32s3/s3_fft_rnd.S",
+        "main/targets/esp32s3/s3_unpack.S"
+      ]
+    },
+    {
+      "slug": "14-spectrum-telemetry",
+      "title": "频谱遥测：SPS1 统计与负载",
+      "file": "14-spectrum-telemetry.md",
+      "section": "片上频谱引擎",
+      "level": "Advanced",
+      "associatedFiles": [
+        "main/common/spectrum_stats.c",
+        "main/common/spectrum_stats.h"
+      ]
+    },
+    {
+      "slug": "15-s3-iq-decimation",
+      "title": "S3 连续 I/Q 抽取流水线",
+      "file": "15-s3-iq-decimation.md",
+      "section": "连续 I/Q 数据流",
+      "level": "Advanced",
+      "associatedFiles": [
+        "main/common/ring_capture.c",
+        "main/targets/esp32s3/s3_firdot.S",
+        "docs/iq-stream.md"
+      ]
+    },
+    {
+      "slug": "16-s31-parlio-capture",
+      "title": "S31 采集：PARLIO 环形 DMA",
+      "file": "16-s31-parlio-capture.md",
+      "section": "连续 I/Q 数据流",
+      "group": "S31 高速流",
+      "level": "Advanced",
+      "associatedFiles": [
+        "main/targets/esp32s31/streaming/receiver.c",
+        "main/targets/esp32s31/streaming/dc.c",
+        "main/targets/esp32s31/streaming/stream.h"
+      ]
+    },
+    {
+      "slug": "17-s31-transport-udp-usb",
+      "title": "S31 传输面：UDP 与高速 USB",
+      "file": "17-s31-transport-udp-usb.md",
+      "section": "连续 I/Q 数据流",
+      "group": "S31 高速流",
+      "level": "Advanced",
+      "associatedFiles": [
+        "main/targets/esp32s31/streaming/network.c",
+        "main/targets/esp32s31/streaming/usb.c",
+        "docs/s31-streaming.md"
+      ]
+    },
+    {
+      "slug": "18-s31-control-api",
+      "title": "S31 控制面：JSON 配置接口",
+      "file": "18-s31-control-api.md",
+      "section": "连续 I/Q 数据流",
+      "group": "S31 高速流",
+      "level": "Intermediate",
+      "associatedFiles": [
+        "main/targets/esp32s31/streaming/control.c",
+        "main/targets/esp32s31/streaming/index.html"
+      ]
+    },
+    {
+      "slug": "19-serial-transport-layer",
+      "title": "串口传输：USB/UART 复用与租约",
+      "file": "19-serial-transport-layer.md",
+      "section": "主机协议与传输",
+      "level": "Intermediate",
+      "associatedFiles": [
+        "main/common/burst_serial.c",
+        "main/common/burst_serial.h"
+      ]
+    },
+    {
+      "slug": "20-command-protocol",
+      "title": "命令协议：分发与快照封包",
+      "file": "20-command-protocol.md",
+      "section": "主机协议与传输",
+      "level": "Intermediate",
+      "associatedFiles": [
+        "main/common/burst_commands.h",
+        "main/common/burst_parse.h",
+        "main/common/burst_limits.h",
+        "docs/protocol.md"
+      ]
+    },
+    {
+      "slug": "21-gpio-outputs",
+      "title": "GPIO 输出与外部器件控制",
+      "file": "21-gpio-outputs.md",
+      "section": "主机协议与传输",
+      "level": "Intermediate",
+      "associatedFiles": [
+        "main/common/burst_gpio.c",
+        "main/common/burst_gpio.h"
+      ]
+    },
+    {
+      "slug": "22-firmware-versioning",
+      "title": "固件版本元数据与上报",
+      "file": "22-firmware-versioning.md",
+      "section": "主机协议与传输",
+      "level": "Beginner",
+      "associatedFiles": [
+        "main/common/burst_version.c",
+        "main/common/burst_version.h",
+        "tools/generate_version.py",
+        "docs/firmware-version.md"
+      ]
+    },
+    {
+      "slug": "23-chip-backend-porting",
+      "title": "多芯片后端移植策略",
+      "file": "23-chip-backend-porting.md",
+      "section": "芯片适配与移植",
+      "group": "芯片家族适配",
+      "level": "Advanced",
+      "associatedFiles": [
+        "main/families/c5_c6_c61/receiver.c",
+        "main/targets/esp32c5/tuning.h",
+        "main/targets/esp32c61/chip.h",
+        "main/targets/esp32s31/tuning.h"
+      ]
+    },
+    {
+      "slug": "24-h2-bluetooth-backend",
+      "title": "H2 蓝牙射频后端适配",
+      "file": "24-h2-bluetooth-backend.md",
+      "section": "芯片适配与移植",
+      "group": "芯片家族适配",
+      "level": "Advanced",
+      "associatedFiles": [
+        "main/targets/esp32h2/receiver.c",
+        "docs/esp32h2.md"
+      ]
+    },
+    {
+      "slug": "25-s2-usb-cdc-patch",
+      "title": "S2 USB CDC ROM 补丁",
+      "file": "25-s2-usb-cdc-patch.md",
+      "section": "芯片适配与移植",
+      "group": "平台补丁与诊断",
+      "level": "Advanced",
+      "associatedFiles": [
+        "platform/esp32s2/esp_usb_cdc_rom_console/"
+      ]
+    },
+    {
+      "slug": "26-diagnostics-probes",
+      "title": "寄存器级诊断探针",
+      "file": "26-diagnostics-probes.md",
+      "section": "芯片适配与移植",
+      "group": "平台补丁与诊断",
+      "level": "Advanced",
+      "associatedFiles": [
+        "main/diagnostics/"
+      ]
+    },
+    {
+      "slug": "27-build-and-release",
+      "title": "构建矩阵与固件导出流水线",
+      "file": "27-build-and-release.md",
+      "section": "构建与验证",
+      "level": "Intermediate",
+      "associatedFiles": [
+        "tools/build_firmware.py",
+        "tools/export_web_firmware.py",
+        "tools/collect_firmware.py",
+        "partitions.csv"
+      ]
+    },
+    {
+      "slug": "28-test-and-validation",
+      "title": "主机测试与硬件在环验证",
+      "file": "28-test-and-validation.md",
+      "section": "构建与验证",
+      "level": "Intermediate",
+      "associatedFiles": [
+        "tests/",
+        "tools/check_spectrum.py",
+        "tools/s3_ring.py"
+      ]
+    }
+  ],
+  "techStackSummary": {
+    "语言": "C（ESP-IDF 应用层）+ Xtensa / RISC-V 手写汇编（SIMD 解包与 FFT）+ Python（构建与主机工具）",
+    "框架": "ESP-IDF（每个固件 profile 固定到 catalog 中的 IDF commit）",
+    "目标芯片": "ESP32 / C2 / C3 / C5 / C6 / C61 / H2 / S2 / S3 / S31",
+    "系统能力": "FreeRTOS 双核调度、SRAM 所有者寄存器、DUMP 采样引擎、PARLIO DMA、GPIO 矩阵、USB Serial/JTAG、USB-OTG CDC、千兆以太网 UDP",
+    "构建与交付": "CMake + idf.py 多 profile 构建矩阵，二进制版本记录嵌入与静态固件目录导出",
+    "对外协议": "行式文本命令 + CRC32 保护的二进制载荷；SPC1 频谱帧、IQS1 抽取流帧、ESR2 高速流包"
+  }
+}
